@@ -1,6 +1,6 @@
 package ui;
 
-import model.Goal;
+//import model.Goal;
 
 // Goal Tracker Application
 public class GoalTrackerApp {
