@@ -34,12 +34,10 @@ persistence, graphical user interface, and design.
 
 ## User stories
 - As a user, I want to be able to add goals to my goal tracker.
-- As a user, I want to be able to add time to my goal tracker.
+- As a user, I want to be able to remove goals from my goal tracker.
+- As a user, I want to be able to add hours to each of my goals in my goal tracker.
 - As a user, I want to define how much time is necessary for each goal to be fully achieved.
-- As a user, I want to be able to visualize the progress of all my goals compared to each other in a graphical user interface.
-- As a user, I want to be able to track/view the running balance of all the total hours put into a specific goal.
 - As a user, I want to see how much time left I need in order to fully achieve a goal.
-- As a user, I want the application to feel organized, encouraging, and easily accessible. 
 
 An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
 the bold and italic fonts correctly but they will appear correctly on GitHub.
