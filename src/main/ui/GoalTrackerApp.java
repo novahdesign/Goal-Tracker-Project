@@ -69,6 +69,17 @@ public class GoalTrackerApp {
     }
 
     private void doAddTime() {
+        Goal selected = selectGoal();
+        System.out.print("Enter hours to add: ");
+        double amount = input.nextDouble();
+
+        if (amount >= 0.0) {
+            selected.addTime(amount);
+        } else {
+            System.out.println("Cannot add negative amount...\n");
+        }
+
+        printProgress(selected);
     }
 
     private void doRemoveGoal() {
@@ -77,6 +88,29 @@ public class GoalTrackerApp {
     private void doAddGoal() {
     }
 
+    // EFFECTS: prompts user to select chequing or savings account and returns it
+    private Goal selectGoal() {
+        String selection = "";  // force entry into loop
+
+        while (!(selection.equals("1") || selection.equals("2"))) {
+            System.out.println("1 for study");
+            System.out.println("2 for sleep");
+            selection = input.next();
+            selection = selection.toLowerCase();
+        }
+
+        if (selection.equals("1")) {
+            return study;
+        } else {
+            return sleep;
+        }
+    }
+
+    private void printProgress(Goal selected) {
+        System.out.printf("Progress: %.2f hours\n", selected.getProgress());
+    }
 }
+
+
 
 
