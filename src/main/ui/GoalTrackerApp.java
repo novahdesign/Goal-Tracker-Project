@@ -47,7 +47,6 @@ public class GoalTrackerApp {
     //initializes the Goals
     private void initialize() {
         goalList = new GoalTracker();
-
         study = new Goal("study", 10);
         sleep = new Goal("sleep", 0);
         input = new Scanner(System.in);
@@ -56,6 +55,7 @@ public class GoalTrackerApp {
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
+        System.out.println("\nWelcome to Goal Tracker!");
         System.out.println("\nSelect from:");
         System.out.println("\tag -> add goal");
         System.out.println("\trg -> remove goal");
@@ -109,6 +109,7 @@ public class GoalTrackerApp {
     private void doRemoveGoal() {
         System.out.println("Enter name of the goal");
         String name = input.next();
+
     }
 
 
@@ -118,6 +119,9 @@ public class GoalTrackerApp {
 
         System.out.println("Enter progress so far:");
         double progress = input.nextDouble();
+
+        System.out.println("Added a goal! ");
+        System.out.println("Name: " + name + " " + "Progress: " + progress);
 
         Goal g = new Goal(name, progress);
         goalList.addGoal(g);
@@ -132,6 +136,7 @@ public class GoalTrackerApp {
         while (!(selection.equals("1") || selection.equals("2"))) {
             System.out.println("1 for study");
             System.out.println("2 for sleep");
+          //  System.out.println("3 for " + new GoalTrackerApp());
             selection = input.next();
             selection = selection.toLowerCase();
         }
