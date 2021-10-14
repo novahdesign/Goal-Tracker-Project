@@ -13,10 +13,10 @@ so far. The application will store, modify, save, and load the multiple goals an
 set amount of time that represents 100% progress, and the user can continue adding time until they achieve that number. When they are 
 finished, the goal will be marked as complete, and the application will say "Congratulations!"
 
-Added functionality includes
+Future functionality includes
 - A Pomodoro Timer
 - Adding colour + sound to the visualizations
-- Incorporating more interactive art in the tracking process, ie Growth of a shape as a goal becomes closer and closer to full progress
+- Incorporating more interactive art in the tracking process bar, ie the growth of a shape as a goal becomes closer and closer to full progress
 
 
 *Who will use it?*
@@ -36,9 +36,6 @@ persistence, graphical user interface, and design.
 - As a user, I want to be able to add goals to my goal tracker.
 - As a user, I want to be able to remove goals from my goal tracker.
 - As a user, I want to be able to add hours to each of my goals in my goal tracker.
-- As a user, I want to define how much time is necessary for each goal to be fully achieved.
-- As a user, I want to see how much time left I need in order to fully achieve a goal.
-
-An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
-the bold and italic fonts correctly but they will appear correctly on GitHub.
+- As a user, I want to be able to see how much progress I have made so far.
+- As a user, I want to be able to view my list of goals.
 

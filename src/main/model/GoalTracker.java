@@ -17,4 +17,8 @@ public class GoalTracker {
     public void removeGoal(Goal g) {
         goalList.remove(g);
     }
+
+    public List<Goal> getGoalList() {
+        return goalList;
+    }
 }

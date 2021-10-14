@@ -40,7 +40,7 @@ public class Goal {
     }
 
     public double trackProgress(double amount) {
-        progress = progress;
+        progress = amount;
         return progress;
     }
 

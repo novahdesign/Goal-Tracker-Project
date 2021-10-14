@@ -1,6 +1,10 @@
 package ui;
 
 import model.Goal;
+import model.GoalTracker;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.Scanner;
 
@@ -10,7 +14,10 @@ import java.util.Scanner;
 public class GoalTrackerApp {
     private Goal study;
     private Goal sleep;
+    private GoalTracker goalList;
+
     private Scanner input;
+
 
     public GoalTrackerApp() {
         runGoalTracker();
@@ -39,6 +46,8 @@ public class GoalTrackerApp {
 
     //initializes the Goals
     private void initialize() {
+        goalList = new GoalTracker();
+
         study = new Goal("study", 10);
         sleep = new Goal("sleep", 0);
         input = new Scanner(System.in);
@@ -52,6 +61,7 @@ public class GoalTrackerApp {
         System.out.println("\trg -> remove goal");
         System.out.println("\tt -> add time");
         System.out.println("\tq -> quit");
+        System.out.println("\tv -> view all goals");
     }
 
     // MODIFIES: this
@@ -63,13 +73,28 @@ public class GoalTrackerApp {
             doRemoveGoal();
         } else if (command.equals("t")) {
             doAddTime();
+        } else if (command.equals("v")) {
+            doViewGoals();
         } else {
             System.out.println("Selection not valid...");
         }
     }
 
+    private void doViewGoals() {
+        for (Goal goal : goalList.getGoalList())
+        {
+            System.out.println(goal.getName() + ", " + goal.getProgress());
+        }
+    }
+//        GoalTracker g = goalList;
+//        for (GoalTracker g : ) {
+//            System.out.println(selectGoal().getName());
+//        }
+//    }
+
     private void doAddTime() {
         Goal selected = selectGoal();
+
         System.out.print("Enter hours to add: ");
         double amount = input.nextDouble();
 
@@ -83,13 +108,25 @@ public class GoalTrackerApp {
     }
 
     private void doRemoveGoal() {
+        System.out.println("Enter name of the goal");
+        String name = input.next();
     }
+
 
     private void doAddGoal() {
+        System.out.println("Enter name of the goal");
+        String name = input.next();
+
+        System.out.println("Enter progress so far:");
+        double progress = input.nextDouble();
+
+        Goal g = new Goal(name, progress);
+        goalList.addGoal(g);
+
 
     }
 
-    // EFFECTS: prompts user to select chequing or savings account and returns it
+    // EFFECTS: prompts user to select study or sleep goal and returns it
     private Goal selectGoal() {
         String selection = "";  // force entry into loop
 

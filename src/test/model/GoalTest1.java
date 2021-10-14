@@ -38,4 +38,18 @@ class GoalTest {
         assertEquals(4, testGoal.getProgress());
     }
 
+    @Test
+    void testNegGetProgress() {
+        Goal testNegGoal = new Goal("negative", -3);
+        assertEquals(0, testNegGoal.getProgress());
+    }
+
+    @Test
+    void testTrackProgress() {
+        testGoal.addTime(0);
+        assertEquals(0, testGoal.trackProgress(0));
+
+    }
+
+
 }
