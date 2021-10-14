@@ -81,8 +81,7 @@ public class GoalTrackerApp {
     }
 
     private void doViewGoals() {
-        for (Goal goal : goalList.getGoalList())
-        {
+        for (Goal goal : goalList.getGoalList()) {
             System.out.println(goal.getName() + ", " + goal.getProgress());
         }
     }
