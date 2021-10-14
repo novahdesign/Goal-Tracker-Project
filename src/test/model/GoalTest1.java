@@ -38,6 +38,7 @@ class GoalTest {
         assertEquals(4, testGoal.getProgress());
     }
 
+    // Tests if initial progress is negative, return 0 if true
     @Test
     void testNegGetProgress() {
         Goal testNegGoal = new Goal("negative", -3);
