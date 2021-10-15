@@ -8,16 +8,14 @@ import java.util.List;
 
 import java.util.Scanner;
 
-//import model.Goal;
-
 // Goal Tracker Application
 public class GoalTrackerApp {
     private Goal study;
     private Goal sleep;
+    private Goal water;
+
     private GoalTracker goalList;
-
     private Scanner input;
-
 
     public GoalTrackerApp() {
         runGoalTracker();
@@ -44,11 +42,13 @@ public class GoalTrackerApp {
         System.out.println("\nGoodbye!");
     }
 
-    //initializes the Goals
+    // MODIFIES: this
+    // EFFECTS: initializes the Goals
     private void initialize() {
         goalList = new GoalTracker();
-        study = new Goal("study", 10);
+        study = new Goal("study", 0);
         sleep = new Goal("sleep", 0);
+        water = new Goal("drink water", 0);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -57,6 +57,7 @@ public class GoalTrackerApp {
     private void displayMenu() {
         System.out.println("\nWelcome to Goal Tracker!");
         System.out.println("\nSelect from:");
+        System.out.println("\ti -> inspiration :)");
         System.out.println("\tag -> add goal");
         System.out.println("\trg -> remove goal");
         System.out.println("\tt -> add time");
@@ -69,6 +70,8 @@ public class GoalTrackerApp {
     private void processCommand(String command) {
         if (command.equals("ag")) {
             doAddGoal();
+        } else if (command.equals("i")) {
+            doInspiration();
         } else if (command.equals("rg")) {
             doRemoveGoal();
         } else if (command.equals("t")) {
@@ -80,16 +83,16 @@ public class GoalTrackerApp {
         }
     }
 
+    private void doInspiration() {
+        System.out.println("You are doing great!");
+        System.out.println("Our greatest glory is not in never falling, but in rising every time we fall. ");
+    }
+
     private void doViewGoals() {
         for (Goal goal : goalList.getGoalList()) {
             System.out.println(goal.getName() + ", " + goal.getProgress());
         }
     }
-//        GoalTracker g = goalList;
-//        for (GoalTracker g : ) {
-//            System.out.println(selectGoal().getName());
-//        }
-//    }
 
     private void doAddTime() {
         Goal selected = selectGoal();
@@ -133,22 +136,30 @@ public class GoalTrackerApp {
     private Goal selectGoal() {
         String selection = "";  // force entry into loop
 
-        while (!(selection.equals("1") || selection.equals("2"))) {
+        while (!(selection.equals("1") || selection.equals("2") || selection.equals("3"))) {
             System.out.println("1 for study");
             System.out.println("2 for sleep");
-          //  System.out.println("3 for " + new GoalTrackerApp());
+            System.out.println("3 for drink water");
+            //  System.out.println("3 for " + new GoalTrackerApp());
             selection = input.next();
             selection = selection.toLowerCase();
         }
 
         if (selection.equals("1")) {
             return study;
-        } else {
+        } else if (selection.equals("2")) {
             return sleep;
+        } else {
+            return water;
         }
     }
 
+
+
+
+
     private void printProgress(Goal selected) {
+        System.out.println("Goal: " + selected.getName());
         System.out.printf("Progress: %.2f hours\n", selected.getProgress());
     }
 }

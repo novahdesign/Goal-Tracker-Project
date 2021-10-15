@@ -2,11 +2,10 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.GoalTrackerApp;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+// Test Class for GoalTracker
 public class GoalTrackerTest {
 
     private GoalTracker testList;
@@ -37,7 +36,10 @@ public class GoalTrackerTest {
         Goal g2 = new Goal( "study", 2);
         testList.addGoal(g1);
         testList.addGoal(g2);
-        assertEquals( 2, testList.getGoalList().size());
+        assertEquals(2, testList.getGoalList().size());
+        assertTrue(testList.getGoalList().contains(g1));
+        assertTrue(testList.getGoalList().contains(g2));
+
     }
 
 

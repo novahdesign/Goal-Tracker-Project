@@ -1,7 +1,6 @@
 package model;
 
-// represents a Goal with an id, goal name, and progress measured in hours
-
+// Represents a Goal with an id, goal name, and progress measured in hours
 public class Goal {
     private static int nextGoalID = 1;
     private int id;
