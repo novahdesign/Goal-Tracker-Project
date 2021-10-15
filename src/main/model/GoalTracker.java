@@ -7,6 +7,8 @@ import java.util.List;
 public class GoalTracker {
     List<Goal> goalList;
 
+    // CONSTRUCTOR
+    // EFFECTS: initialize the goalList as an empty ArrayList
     public GoalTracker() {
         goalList = new ArrayList<>();
     }
@@ -25,6 +27,7 @@ public class GoalTracker {
         goalList.remove(g);
     }
 
+    // EFFECTS: returns goalList
     public List<Goal> getGoalList() {
         return goalList;
     }

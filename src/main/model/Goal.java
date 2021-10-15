@@ -21,23 +21,30 @@ public class Goal {
         }
     }
 
+    // EFFECTS: returns goal id
     public int getId() {
         return id;
     }
 
+    // EFFECTS: returns goal name
     public String getName() {
         return name;
     }
 
+    // EFFECTS: returns progress
     public double getProgress() {
         return progress;
     }
 
+    // REQUIRES: amount >= 0
+    // MODIFIES: this
+    // EFFECTS: amount is added to progress and progress is returned
     public double addTime(double amount) {
         progress = progress + amount;
         return progress;
     }
 
+    // EFFECTS: returns progress = to amount
     public double trackProgress(double amount) {
         progress = amount;
         return progress;

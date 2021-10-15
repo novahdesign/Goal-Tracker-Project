@@ -17,10 +17,13 @@ public class GoalTrackerApp {
     private GoalTracker goalList;
     private Scanner input;
 
+    // EFFECTS: runs the GoalTracker application
     public GoalTrackerApp() {
         runGoalTracker();
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input
     private void runGoalTracker() {
         boolean keepGoing = true;
         String command = null;
@@ -83,17 +86,21 @@ public class GoalTrackerApp {
         }
     }
 
+    // EFFECTS: prints two lines of inspirational quotes
     private void doInspiration() {
         System.out.println("You are doing great!");
         System.out.println("Our greatest glory is not in never falling, but in rising every time we fall. ");
     }
 
+    // EFFECTS: prints goal name and goal progress from list of goals
     private void doViewGoals() {
         for (Goal goal : goalList.getGoalList()) {
             System.out.println(goal.getName() + ", " + goal.getProgress());
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts adding time to selected goal's progress
     private void doAddTime() {
         Goal selected = selectGoal();
 
@@ -109,13 +116,16 @@ public class GoalTrackerApp {
         printProgress(selected);
     }
 
+    // MODIFIES: this
+    // EFFECTS: removes a goal from the list of goals
     private void doRemoveGoal() {
         System.out.println("Enter name of the goal");
         String name = input.next();
 
     }
 
-
+    // MODIFIES: this
+    // EFFECTS: adds a goal to the list of goals
     private void doAddGoal() {
         System.out.println("Enter name of the goal");
         String name = input.next();
@@ -132,7 +142,7 @@ public class GoalTrackerApp {
 
     }
 
-    // EFFECTS: prompts user to select study or sleep goal and returns it
+    // EFFECTS: prompts user to select a goal and returns it
     private Goal selectGoal() {
         String selection = "";  // force entry into loop
 
@@ -154,10 +164,7 @@ public class GoalTrackerApp {
         }
     }
 
-
-
-
-
+    // EFFECTS: prints the progress of a goal
     private void printProgress(Goal selected) {
         System.out.println("Goal: " + selected.getName());
         System.out.printf("Progress: %.2f hours\n", selected.getProgress());
