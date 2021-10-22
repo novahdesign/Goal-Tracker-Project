@@ -36,8 +36,5 @@ persistence, graphical user interface, and design.
 - As a user, I want to be able to add goals to my goal tracker.
 - As a user, I want to be able to add hours to each of my goals in my goal tracker.
 - As a user, I want to be able to view my list of goals and the progress for each.
-- As a user, I want to be able to have an inspirational quote printed when I select the option. 
-
-- As a user, I want to be able to view my list of goals.
-- As a user, I want to be able to see how much progress I have made so far.
+- As a user, I want to be able to have an inspirational quote printed when I select the option.
 

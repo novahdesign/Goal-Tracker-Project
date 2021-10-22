@@ -31,4 +31,10 @@ public class GoalTracker {
     public List<Goal> getGoalList() {
         return goalList;
     }
+
+//    // EFFECTS: returns goal
+//    public Goal getGoal() {
+//        if (goalList.)
+//        return Goal
+//    }
 }

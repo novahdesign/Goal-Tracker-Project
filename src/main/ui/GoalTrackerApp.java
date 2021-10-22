@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 // Goal Tracker Application
 public class GoalTrackerApp {
-    private Goal study;
-    private Goal sleep;
-    private Goal water;
+//    private Goal study;
+//    private Goal sleep;
+//    private Goal water;
 
     private GoalTracker goalList;
     private Scanner input;
@@ -49,9 +49,9 @@ public class GoalTrackerApp {
     // EFFECTS: initializes the Goals
     private void initialize() {
         goalList = new GoalTracker();
-        study = new Goal("study", 0);
-        sleep = new Goal("sleep", 0);
-        water = new Goal("drink water", 0);
+//        study = new Goal("study", 0);
+//        sleep = new Goal("sleep", 0);
+//        water = new Goal("drink water", 0);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -88,7 +88,7 @@ public class GoalTrackerApp {
 
     // EFFECTS: prints two lines of inspirational quotes
     private void doInspiration() {
-        System.out.println("You are doing great!");
+        System.out.println("You are doing great! <3");
         System.out.println("Our greatest glory is not in never falling, but in rising every time we fall. ");
     }
 
@@ -144,25 +144,31 @@ public class GoalTrackerApp {
 
     // EFFECTS: prompts user to select a goal and returns it
     private Goal selectGoal() {
+
+        System.out.println("List of goals to choose from");
+        doViewGoals();
         String selection = "";  // force entry into loop
+        Goal ret = null;
 
-        while (!(selection.equals("1") || selection.equals("2") || selection.equals("3"))) {
-            System.out.println("1 for study");
-            System.out.println("2 for sleep");
-            System.out.println("3 for drink water");
-            //  System.out.println("3 for " + new GoalTrackerApp());
+        System.out.println("Enter a goal name:");
+
+        while ((ret == null)) {
             selection = input.next();
-            selection = selection.toLowerCase();
-        }
 
-        if (selection.equals("1")) {
-            return study;
-        } else if (selection.equals("2")) {
-            return sleep;
-        } else {
-            return water;
+            for (Goal goal : goalList.getGoalList()) {
+                if (goal.getName().equals(selection)) {
+                    ret = goal;
+                    break;
+                }
+            }
         }
+        return ret;
     }
+
+    // iterate over list
+    // get goalList, run for each, match
+    //    selection = selection.toLowerCase();
+
 
     // EFFECTS: prints the progress of a goal
     private void printProgress(Goal selected) {
