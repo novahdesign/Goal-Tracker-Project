@@ -33,6 +33,8 @@ Additionally, I will gain valuable experience designing a Java application throu
 persistence, graphical user interface, and design.
 
 ## User stories
+
+### Phase 1 
 - As a user, I want to be able to add goals to my goal tracker.
 - As a user, I want to be able to add hours to each of my goals in my goal tracker.
 - As a user, I want to be able to view my list of goals and the progress for each.
@@ -41,3 +43,6 @@ persistence, graphical user interface, and design.
 - As a user, I want to be able to view my list of goals.
 - As a user, I want to be able to see how much progress I have made so far.
 
+### Phase 2
+- As a user, I want to be able to choose to save my goal tracker with the progress so far on each goal. 
+- As a user, I want to be given the option to load my goal tracker on file.
