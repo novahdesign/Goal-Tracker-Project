@@ -46,31 +46,30 @@ class JsonWriterTest extends JsonTest {
         }
     }
 
-//
-//    // write down the data to a file, use reader to read it back in to check
-//    @Test
-//    void testWriterGoalTrackerNormal() {
-//        try {
-//            GoalTracker goalTracker = new GoalTracker("Goal Tracker Test User");
-//            goalTracker.addGoal(new Goal("study", 0));
-//            goalTracker.addGoal(new Goal("sleep",0));
-//            JsonWriter writer = new JsonWriter(".data/testWriterGoalTrackerNormal.json");
-//
-//            writer.write(goalTracker);
-//
-//
-//            JsonReader reader = new JsonReader(".data/testWriterGoalTrackerNormal.json");
-//            goalTracker = reader.read();
-//            assertEquals("Goal Tracker Test User", goalTracker.getUser());
-//
-//            List<Goal> goals = goalTracker.getGoalList();
-//            assertEquals(2, goals.size());
-//            checkGoal("study", 0, goals.get(0));
-//            checkGoal("sleep", 0, goals.get(1));
-//
-//        } catch (IOException e) {
-//            fail("Exception should not have been thrown");
-//        }
-//    }
+    @Test
+    void testWriterNormalGoalTracker() {
+        try {
+            GoalTracker goalTracker = new GoalTracker("Goal Tracker Test User");
+            JsonWriter writer = new JsonWriter("./data/testWriterNormalGoalTracker.json");
+            goalTracker.addGoal(new Goal("study", 0));
+            goalTracker.addGoal(new Goal("sleep",0));
+
+            writer.open();
+            writer.write(goalTracker);
+            writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterNormalGoalTracker.json");
+            goalTracker = reader.read();
+
+            List<Goal> goals = goalTracker.getGoalList();
+            assertEquals("Goal Tracker Test User", goalTracker.getUser());
+            assertEquals(2, goalTracker.getLength());
+            checkGoal("study", 0, goals.get(0));
+            checkGoal("sleep", 0, goals.get(1));
+
+        } catch (IOException e) {
+            fail("Exception should not have been thrown");
+        }
+    }
 
 }
