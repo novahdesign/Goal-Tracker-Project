@@ -41,5 +41,5 @@ persistence, graphical user interface, and design.
 - As a user, I want to be able to have an inspirational quote printed when I select the option.
 
 ### Phase 2
-- As a user, I want to be able to choose to save my goal tracker with the progress so far on each goal. 
-- As a user, I want to be given the option to load my goal tracker on file.
+- As a user, I want to be able to save my goal tracker with the progress so far on each goal on quitting the application. 
+- As a user, I want to load my goal tracker on file on opening the application.
