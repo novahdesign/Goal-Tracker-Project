@@ -1,0 +1,13 @@
+{
+    "user": "Goal Tracker Test User",
+    "goals": [
+        {
+            "name": "study",
+            "progress": "0"
+        },
+        {
+            "name": "sleep",
+            "progress": "0"
+        }
+    ]
+}

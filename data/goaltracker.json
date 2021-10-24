@@ -1,0 +1,13 @@
+{
+    "user": "Default User",
+    "goals": [
+        {
+            "name": "1",
+            "progress": "1.0"
+        },
+        {
+            "name": "2",
+            "progress": "2.0"
+        }
+    ]
+}
