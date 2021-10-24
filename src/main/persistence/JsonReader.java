@@ -60,7 +60,7 @@ public class JsonReader {
     // EFFECTS: parses thingy from JSON object and adds it to workroom
     private void addGoal(GoalTracker goalTracker, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Integer progress = Integer.parseInt(jsonObject.getString("progress"));
+        int progress = Integer.parseInt(jsonObject.getString("progress"));
 
         Goal newGoal = new Goal(name, progress);
         goalTracker.addGoal(newGoal);

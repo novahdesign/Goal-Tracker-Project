@@ -130,7 +130,7 @@ public class GoalTrackerApp {
         System.out.print("Enter hours to add: ");
         int amount = input.nextInt();
 
-        if (amount >= 0.0) {
+        if (amount >= 0) {
             selected.addTime(amount);
         } else {
             System.out.println("Cannot add negative amount...\n");
@@ -196,7 +196,7 @@ public class GoalTrackerApp {
     // EFFECTS: prints the progress of a goal
     private void printProgress(Goal selected) {
         System.out.println("Goal: " + selected.getName());
-        System.out.printf("Progress: %.2f hours\n", selected.getProgress());
+        System.out.printf("Progress: %2d hours\n", selected.getProgress());
     }
 
 

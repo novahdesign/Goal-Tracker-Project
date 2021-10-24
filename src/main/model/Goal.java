@@ -35,7 +35,7 @@ public class Goal implements Writable {
     }
 
     // EFFECTS: returns progress
-    public double getProgress() {
+    public int getProgress() {
         return progress;
     }
 
