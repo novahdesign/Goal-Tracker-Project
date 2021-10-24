@@ -32,6 +32,12 @@ public class GoalTracker {
         return goalList;
     }
 
+    // EFFECTS: returns list size
+
+    public int getLength() {
+        return goalList.size();
+    }
+
 //    // EFFECTS: returns goal
 //    public Goal getGoal() {
 //        if (goalList.)

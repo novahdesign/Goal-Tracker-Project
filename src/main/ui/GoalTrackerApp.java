@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.EmptyException;
 import model.Goal;
 import model.GoalTracker;
 
@@ -102,6 +103,8 @@ public class GoalTrackerApp {
     // MODIFIES: this
     // EFFECTS: conducts adding time to selected goal's progress
     private void doAddTime() {
+        System.out.println("List of goals to choose from:");
+        doViewGoals();
         Goal selected = selectGoal();
 
         System.out.print("Enter hours to add: ");
@@ -116,18 +119,36 @@ public class GoalTrackerApp {
         printProgress(selected);
     }
 
+    // REQUIRES: list of goals is non-empty
     // MODIFIES: this
     // EFFECTS: removes a goal from the list of goals
     private void doRemoveGoal() {
-        System.out.println("Enter name of the goal");
-        String name = input.next();
 
+        if (goalList.getLength() == 0) {
+            System.out.println("Goal list is empty, add a goal!");
+
+
+//        if (goalList.getLength() == 0) {
+//            try {
+//                throw new EmptyException();
+//            } catch (EmptyException e) {
+//                System.out.println("Goal list is empty! Add a goal!");
+//                displayMenu();
+//            }
+        } else {
+            Goal selected = selectGoal();
+
+            goalList.removeGoal(selected);
+
+            doViewGoals();
+
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: adds a goal to the list of goals
     private void doAddGoal() {
-        System.out.println("Enter name of the goal");
+        System.out.println("Enter name of the goal:");
         String name = input.next();
 
         System.out.println("Enter progress so far:");
@@ -142,19 +163,18 @@ public class GoalTrackerApp {
 
     }
 
+
+    // REQUIRES: non-empty list of goals
     // EFFECTS: prompts user to select a goal and returns it
     private Goal selectGoal() {
 
-        System.out.println("List of goals to choose from");
-        doViewGoals();
-        String selection = "";  // force entry into loop
-        Goal ret = null;
 
+        String selection = "";  // force entry into loop
+        Goal ret = null; // return goal that is inputted
         System.out.println("Enter a goal name:");
 
         while ((ret == null)) {
             selection = input.next();
-
             for (Goal goal : goalList.getGoalList()) {
                 if (goal.getName().equals(selection)) {
                     ret = goal;
@@ -164,6 +184,7 @@ public class GoalTrackerApp {
         }
         return ret;
     }
+
 
     // iterate over list
     // get goalList, run for each, match

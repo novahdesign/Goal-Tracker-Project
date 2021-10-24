@@ -42,5 +42,15 @@ public class GoalTrackerTest {
 
     }
 
+    @Test
+    void testGetLength() {
+        assertEquals(0,testList.getLength());
+        Goal g1 = new Goal("sleep", 1);
+        testList.addGoal(g1);
+        assertEquals(1,testList.getLength());
+
+
+    }
+
 
 }
