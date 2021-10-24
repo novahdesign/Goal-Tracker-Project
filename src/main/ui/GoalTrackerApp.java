@@ -128,7 +128,7 @@ public class GoalTrackerApp {
         Goal selected = selectGoal();
 
         System.out.print("Enter hours to add: ");
-        double amount = input.nextDouble();
+        int amount = input.nextInt();
 
         if (amount >= 0.0) {
             selected.addTime(amount);
@@ -161,7 +161,7 @@ public class GoalTrackerApp {
         String name = input.next();
 
         System.out.println("Enter progress so far:");
-        double progress = input.nextDouble();
+        int progress = input.nextInt();
 
         System.out.println("Added a goal! ");
         System.out.println("Name: " + name + " " + "Progress: " + progress);
