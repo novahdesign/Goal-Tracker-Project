@@ -8,15 +8,13 @@ import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import java.util.Scanner;
 
 // Goal Tracker Application
 public class GoalTrackerApp {
     private static final String JSON_LOC = "./data/goaltracker.json";
-    private GoalTracker goalList;
+    private GoalTracker goalTracker;
     private Scanner input;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -42,9 +40,11 @@ public class GoalTrackerApp {
 
             if (command.equals("q")) {
                 keepGoing = false;
+                saveGoalTracker();
 
             } else {
                 processCommand(command);
+
             }
         }
 
@@ -55,16 +55,21 @@ public class GoalTrackerApp {
     // EFFECTS: initializes the Goals
     private void initialize() {
         jsonReader = new JsonReader(JSON_LOC);
-        try {
-            goalList = jsonReader.read();
-        } catch (IOException e) {
-            goalList = new GoalTracker();
-            System.out.println("This is the first time using Goal Tracker!");
-        }
+        loadGoalTracker();
         jsonWriter = new JsonWriter(JSON_LOC);
 
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+    }
+
+    private void loadGoalTracker() {
+        try {
+            goalTracker = jsonReader.read();
+        } catch (IOException e) {
+            goalTracker = new GoalTracker();
+            System.out.println("This is the first time using Goal Tracker!");
+            goalTracker.setUser("Default User"); // in future setUser(username) given in intialize
+        }
     }
 
     // EFFECTS: displays menu of options to user
@@ -110,7 +115,7 @@ public class GoalTrackerApp {
 
     // EFFECTS: prints goal name and goal progress from list of goals
     private void doViewGoals() {
-        for (Goal goal : goalList.getGoalList()) {
+        for (Goal goal : goalTracker.getGoalList()) {
             System.out.println(goal.getName() + ", " + goal.getProgress());
         }
     }
@@ -139,11 +144,11 @@ public class GoalTrackerApp {
     // EFFECTS: removes a goal from the list of goals
     private void doRemoveGoal() throws EmptyException {
 
-        if (goalList.getLength() == 0) {
+        if (goalTracker.getLength() == 0) {
             throw new EmptyException();
         } else {
             Goal selected = selectGoal();
-            goalList.removeGoal(selected);
+            goalTracker.removeGoal(selected);
             doViewGoals();
 
         }
@@ -162,7 +167,7 @@ public class GoalTrackerApp {
         System.out.println("Name: " + name + " " + "Progress: " + progress);
 
         Goal g = new Goal(name, progress);
-        goalList.addGoal(g);
+        goalTracker.addGoal(g);
 
 
     }
@@ -178,7 +183,7 @@ public class GoalTrackerApp {
 
         while ((ret == null)) {
             selection = input.next();
-            for (Goal goal : goalList.getGoalList()) {
+            for (Goal goal : goalTracker.getGoalList()) {
                 if (goal.getName().equals(selection)) {
                     ret = goal;
                     break;
@@ -193,8 +198,17 @@ public class GoalTrackerApp {
         System.out.println("Goal: " + selected.getName());
         System.out.printf("Progress: %.2f hours\n", selected.getProgress());
     }
+
+
+    // EFFECTS: saves the workroom to file
+    private void saveGoalTracker() {
+        try {
+            jsonWriter.write(goalTracker);
+            System.out.println("Saved " + goalTracker.getUser() + " to " + JSON_LOC);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_LOC);
+        }
+    }
 }
-
-
 
 

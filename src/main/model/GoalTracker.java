@@ -9,7 +9,7 @@ import java.util.List;
 
 // Represents a GoalTracker comprised of an ArrayList of Goals
 public class GoalTracker implements Writable {
-    private List<Goal> goalList;
+    private List<Goal> goalList = new ArrayList<>();
     private String user = null;
 
     public void setGoalList(List<Goal> goalList) {
@@ -32,7 +32,6 @@ public class GoalTracker implements Writable {
     // CONSTRUCTOR
     // EFFECTS: initialize the goalList as an empty ArrayList
     public GoalTracker() {
-        goalList = new ArrayList<>();
     }
 
     // CONSTRUCTOR
