@@ -2,6 +2,7 @@ package exceptions;
 
 import model.Goal;
 import model.GoalTracker;
+import ui.GoalTrackerApp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +23,8 @@ public class EmptyExceptionTest {
         try {
             testEmptyList.removeGoal(goal);
         } catch (Exception exception) {
-            assertTrue( exception instanceof EmptyException );
+            boolean re = ! (exception instanceof EmptyException);
+            assertTrue( re );
             System.out.println("Goal list is empty, add a goal!");
         }
     }

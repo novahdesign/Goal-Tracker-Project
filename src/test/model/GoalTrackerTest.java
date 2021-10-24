@@ -2,6 +2,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.GoalTrackerApp;
+
+import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +18,7 @@ public class GoalTrackerTest {
     }
 
     @Test
-    void testAddGoalTracker(){
+    void testAddGoalTracker() {
         Goal g1 = new Goal("study", 0);
         testList.addGoal(g1);
         assertEquals(1, testList.getGoalList().size());
@@ -33,7 +35,7 @@ public class GoalTrackerTest {
     @Test
     void testGetGoalList() {
         Goal g1 = new Goal("sleep", 1);
-        Goal g2 = new Goal( "study", 2);
+        Goal g2 = new Goal("study", 2);
         testList.addGoal(g1);
         testList.addGoal(g2);
         assertEquals(2, testList.getGoalList().size());
@@ -44,13 +46,28 @@ public class GoalTrackerTest {
 
     @Test
     void testGetLength() {
-        assertEquals(0,testList.getLength());
+        assertEquals(0, testList.getLength());
         Goal g1 = new Goal("sleep", 1);
         testList.addGoal(g1);
-        assertEquals(1,testList.getLength());
+        assertEquals(1, testList.getLength());
 
 
     }
 
+//    public void setGoalList(List<Goal> goalList) {
+//        this.goalList = goalList;
+//    }
+//
+    @Test
+    void testSetGoalList() {
+        List<Goal> goalList = new ArrayList<>();
+        testList.setGoalList(goalList);
+        assertTrue(this.testList.getGoalList() == goalList);
+    }
 
+    @Test
+    void testSetUser() {
+        testList.setUser("Test User");
+        assertTrue(this.testList.getUser() == "Test User");
+    }
 }
