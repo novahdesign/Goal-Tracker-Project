@@ -39,7 +39,7 @@ persistence, graphical user interface, and design.
 - As a user, I want to be able to add hours to each of my goals in my goal tracker.
 - As a user, I want to be able to view my list of goals and the progress for each.
 - As a user, I want to be able to have an inspirational quote printed when I select the option.
-
+- As a user, I want to be able to remove goals from my goal tracker.
 ### Phase 2
 - As a user, I want to be able to save my goal tracker with the progress so far on each goal on quitting the application. 
 - As a user, I want to load my goal tracker on file on opening the application.
