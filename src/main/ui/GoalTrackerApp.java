@@ -3,7 +3,11 @@ package ui;
 import exceptions.EmptyException;
 import model.Goal;
 import model.GoalTracker;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +15,12 @@ import java.util.Scanner;
 
 // Goal Tracker Application
 public class GoalTrackerApp {
-//    private Goal study;
-//    private Goal sleep;
-//    private Goal water;
-
+    private static final String JSON_LOC = "./data/goaltracker.json";
     private GoalTracker goalList;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
 
     // EFFECTS: runs the GoalTracker application
     public GoalTrackerApp() {
@@ -38,6 +42,7 @@ public class GoalTrackerApp {
 
             if (command.equals("q")) {
                 keepGoing = false;
+
             } else {
                 processCommand(command);
             }
@@ -49,7 +54,15 @@ public class GoalTrackerApp {
     // MODIFIES: this
     // EFFECTS: initializes the Goals
     private void initialize() {
-        goalList = new GoalTracker();
+        jsonReader = new JsonReader(JSON_LOC);
+        try {
+            goalList = jsonReader.read();
+        } catch (IOException e) {
+            goalList = new GoalTracker();
+            System.out.println("This is the first time using Goal Tracker!");
+        }
+        jsonWriter = new JsonWriter(JSON_LOC);
+
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -174,12 +187,6 @@ public class GoalTrackerApp {
         }
         return ret;
     }
-
-
-    // iterate over list
-    // get goalList, run for each, match
-    //    selection = selection.toLowerCase();
-
 
     // EFFECTS: prints the progress of a goal
     private void printProgress(Goal selected) {

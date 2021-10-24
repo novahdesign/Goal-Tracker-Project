@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a Goal with an id, goal name, and progress measured in hours
-public class Goal {
+public class Goal implements Writable {
     private static int nextGoalID = 1;
     private int id;
     private String name;
@@ -50,4 +53,11 @@ public class Goal {
         return progress;
     }
 
+    public JSONObject toJson() {
+        JSONObject jsonGoal = new JSONObject();
+        jsonGoal.put("name",name);
+        jsonGoal.put("progress", (String.valueOf(progress)));
+
+        return jsonGoal;
+    }
 }

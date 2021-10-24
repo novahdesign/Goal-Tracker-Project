@@ -1,16 +1,44 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a GoalTracker comprised of an ArrayList of Goals
-public class GoalTracker {
-    List<Goal> goalList;
+public class GoalTracker implements Writable {
+    private List<Goal> goalList;
+    private String user = null;
+
+    public void setGoalList(List<Goal> goalList) {
+        this.goalList = goalList;
+    }
+
+    public List<Goal> getGoalList() {
+        return goalList;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
 
     // CONSTRUCTOR
     // EFFECTS: initialize the goalList as an empty ArrayList
     public GoalTracker() {
         goalList = new ArrayList<>();
+    }
+
+    // CONSTRUCTOR
+    // EFFECTS: initialize the user, assigns GoalTracker user to the user
+    public GoalTracker(String user) {
+        this.user = user;
     }
 
     // REQUIRES: Goal g not already in list
@@ -27,20 +55,31 @@ public class GoalTracker {
         goalList.remove(g);
     }
 
-    // EFFECTS: returns goalList
-    public List<Goal> getGoalList() {
-        return goalList;
-    }
-
     // EFFECTS: returns list size
 
     public int getLength() {
         return goalList.size();
     }
 
-//    // EFFECTS: returns goal
-//    public Goal getGoal() {
-//        if (goalList.)
-//        return Goal
-//    }
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("user", user);
+        json.put("goals", goalsToJson());
+        return json;
+    }
+
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray goalsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Goal goal : goalList) {
+            jsonArray.put(goal.toJson());
+        }
+
+        return jsonArray;
+    }
+
 }
+
