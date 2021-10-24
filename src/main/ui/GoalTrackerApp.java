@@ -50,9 +50,6 @@ public class GoalTrackerApp {
     // EFFECTS: initializes the Goals
     private void initialize() {
         goalList = new GoalTracker();
-//        study = new Goal("study", 0);
-//        sleep = new Goal("sleep", 0);
-//        water = new Goal("drink water", 0);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -76,8 +73,13 @@ public class GoalTrackerApp {
             doAddGoal();
         } else if (command.equals("i")) {
             doInspiration();
+
         } else if (command.equals("rg")) {
-            doRemoveGoal();
+            try {
+                doRemoveGoal();
+            } catch (EmptyException e) {
+                System.out.println("Goal list is empty, add a goal!");
+            }
         } else if (command.equals("t")) {
             doAddTime();
         } else if (command.equals("v")) {
@@ -122,24 +124,13 @@ public class GoalTrackerApp {
     // REQUIRES: list of goals is non-empty
     // MODIFIES: this
     // EFFECTS: removes a goal from the list of goals
-    private void doRemoveGoal() {
+    private void doRemoveGoal() throws EmptyException {
 
         if (goalList.getLength() == 0) {
-            System.out.println("Goal list is empty, add a goal!");
-
-
-//        if (goalList.getLength() == 0) {
-//            try {
-//                throw new EmptyException();
-//            } catch (EmptyException e) {
-//                System.out.println("Goal list is empty! Add a goal!");
-//                displayMenu();
-//            }
+            throw new EmptyException();
         } else {
             Goal selected = selectGoal();
-
             goalList.removeGoal(selected);
-
             doViewGoals();
 
         }
@@ -167,7 +158,6 @@ public class GoalTrackerApp {
     // REQUIRES: non-empty list of goals
     // EFFECTS: prompts user to select a goal and returns it
     private Goal selectGoal() {
-
 
         String selection = "";  // force entry into loop
         Goal ret = null; // return goal that is inputted
