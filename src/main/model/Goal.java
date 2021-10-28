@@ -53,6 +53,9 @@ public class Goal implements Writable {
         return progress;
     }
 
+    // Code modelled from: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
+    @Override
     public JSONObject toJson() {
         JSONObject jsonGoal = new JSONObject();
         jsonGoal.put("name",name);

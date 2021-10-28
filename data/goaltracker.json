@@ -1,7 +1,7 @@
 {
     "user": "Default User",
     "goals": [{
-        "name": "compsci",
-        "progress": "22"
+        "name": "goal example 2",
+        "progress": "4"
     }]
 }

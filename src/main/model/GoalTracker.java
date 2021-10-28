@@ -60,6 +60,8 @@ public class GoalTracker implements Writable {
         return goalList.size();
     }
 
+    // Code modelled from: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -69,7 +71,7 @@ public class GoalTracker implements Writable {
     }
 
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns goals in this goal tracker as a JSON array
     private JSONArray goalsToJson() {
         JSONArray jsonArray = new JSONArray();
 

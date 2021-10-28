@@ -1,6 +1,5 @@
 package ui;
 
-import exceptions.EmptyException;
 import model.Goal;
 import model.GoalTracker;
 import persistence.JsonReader;
@@ -91,13 +90,11 @@ public class GoalTrackerApp {
             doAddGoal();
         } else if (command.equals("i")) {
             doInspiration();
-
         } else if (command.equals("rg")) {
-            try {
-                doRemoveGoal();
-            } catch (EmptyException e) {
-                System.out.println("Goal list is empty, add a goal!");
-            }
+//            try {
+            doRemoveGoal();
+//            } catch (EmptyException e) {
+//                System.out.println("Goal list is empty, add a goal!");
         } else if (command.equals("t")) {
             doAddTime();
         } else if (command.equals("v")) {
@@ -142,16 +139,11 @@ public class GoalTrackerApp {
     // REQUIRES: list of goals is non-empty
     // MODIFIES: this
     // EFFECTS: removes a goal from the list of goals
-    private void doRemoveGoal() throws EmptyException {
-
-        if (goalTracker.getLength() == 0) {
-            throw new EmptyException();
-        } else {
-            Goal selected = selectGoal();
-            goalTracker.removeGoal(selected);
-            doViewGoals();
-
-        }
+    private void doRemoveGoal() {
+        doViewGoals();
+        Goal selected = selectGoal();
+        goalTracker.removeGoal(selected);
+        doViewGoals();
     }
 
     // MODIFIES: this

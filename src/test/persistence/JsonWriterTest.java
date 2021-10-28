@@ -70,6 +70,7 @@ class JsonWriterTest extends JsonTest {
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
+
     }
 
 }

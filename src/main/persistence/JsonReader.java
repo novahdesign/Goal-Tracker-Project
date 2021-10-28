@@ -10,7 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-// Represents a reader that reads workroom from JSON data stored in file
+// Code modelled from: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
+// Represents a reader that reads goalTracker from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -19,7 +21,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads goalTracker from file and returns it;
     // throws IOException if an error occurs reading data from file
     public GoalTracker read() throws IOException {
         String jsonData = readFile(source);
@@ -38,7 +40,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses goalTracker from JSON object and returns it
     private GoalTracker parseGoalTracker(JSONObject jsonObject) {
         String username = jsonObject.getString("user");
         GoalTracker goalTracker = new GoalTracker(username);
@@ -46,8 +48,8 @@ public class JsonReader {
         return goalTracker;
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // MODIFIES: goalTracker
+    // EFFECTS: parses goals from JSON object and adds them to goalTracker
     private void addGoals(GoalTracker goalTracker, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("goals");
         for (Object json : jsonArray) {
@@ -56,8 +58,8 @@ public class JsonReader {
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // MODIFIES: goal
+    // EFFECTS: parses goal from JSON object and adds it to goalTracker
     private void addGoal(GoalTracker goalTracker, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int progress = Integer.parseInt(jsonObject.getString("progress"));
