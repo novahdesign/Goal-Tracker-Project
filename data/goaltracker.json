@@ -1,7 +1,17 @@
 {
     "user": "Default User",
-    "goals": [{
-        "name": "goal example 2",
-        "progress": "4"
-    }]
+    "goals": [
+        {
+            "name": "study",
+            "progress": "10"
+        },
+        {
+            "name": "sleep",
+            "progress": "10"
+        },
+        {
+            "name": "excercise",
+            "progress": "2"
+        }
+    ]
 }

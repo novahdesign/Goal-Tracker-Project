@@ -61,6 +61,7 @@ public class GoalTrackerApp {
         input.useDelimiter("\n");
     }
 
+    // EFFECTS: loads the goals in the Goal Tracker
     private void loadGoalTracker() {
         try {
             goalTracker = jsonReader.read();
