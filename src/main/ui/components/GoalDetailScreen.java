@@ -19,6 +19,7 @@ public class GoalDetailScreen implements ActionListener {
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public GoalDetailScreen(Goal goal) {
+
         this.goal = goal;
 
         JPanel panel = new JPanel();
