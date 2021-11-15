@@ -17,6 +17,7 @@ public class GoalDetailScreen implements ActionListener {
 
     private Goal newGoal;
 
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public GoalDetailScreen(Goal goal) {
         this.goal = goal;
 
