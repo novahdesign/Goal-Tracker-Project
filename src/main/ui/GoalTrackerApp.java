@@ -116,8 +116,8 @@ public class GoalTrackerApp {
         for (Goal goal : goalTracker.getGoalList()) {
             double p = goal.getProgress();
 
-            System.out.println(goal.getName() + ", Current Hours:" + goal.getCurrentHours() + ", Progress:" +
-                    goal.getProgress());
+            System.out.println(goal.getName() + ", Current Hours:" + goal.getCurrentHours() + ", Progress:"
+                    + goal.getProgress());
         }
     }
 

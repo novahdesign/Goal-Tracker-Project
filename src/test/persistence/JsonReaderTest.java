@@ -40,7 +40,6 @@ class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderNormalGoalTracker.json");
 
         try {
-
             GoalTracker goalTracker = reader.read();
             assertEquals("Goal Tracker Test User", goalTracker.getUser());
 

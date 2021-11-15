@@ -1,0 +1,15 @@
+{
+  "user": "Goal Tracker Test User",
+  "goals": [
+    {
+      "target hours": 100,
+      "name": "study",
+      "current hours": "0"
+    },
+    {
+      "target hours": 100,
+      "name": "sleep",
+      "current hours": "0"
+    }
+  ]
+}

@@ -39,6 +39,9 @@ public class Goal implements Writable {
 
     // EFFECTS: returns progress
     public int getCurrentHours() {
+        if (currentHours < 0) {
+            return 0;
+        }
         return currentHours;
     }
 
@@ -57,7 +60,7 @@ public class Goal implements Writable {
 
     // EFFECTS: returns progress = to amount
     public double getProgress() {
-        double progress = (double) ((double) currentHours / (double) targetHours) * 100;
+        double progress = ((double) currentHours / (double) targetHours) * 100;
         return progress;
     }
 
