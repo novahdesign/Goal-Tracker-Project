@@ -43,7 +43,9 @@ public class Goal implements Writable {
     }
 
     // EFFECTS: returns target hours
-    public int getTargetHours() { return  targetHours;}
+    public int getTargetHours() {
+        return targetHours;
+    }
 
     // REQUIRES: amount >= 0
     // MODIFIES: this
@@ -55,7 +57,7 @@ public class Goal implements Writable {
 
     // EFFECTS: returns progress = to amount
     public double getProgress() {
-        double progress = (double) ((double)currentHours / (double)targetHours) * 100;
+        double progress = (double) ((double) currentHours / (double) targetHours) * 100;
         return progress;
     }
 
@@ -64,7 +66,7 @@ public class Goal implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject jsonGoal = new JSONObject();
-        jsonGoal.put("name",name);
+        jsonGoal.put("name", name);
         jsonGoal.put("target hours", targetHours);
         jsonGoal.put("current hours", (String.valueOf(currentHours)));
 
