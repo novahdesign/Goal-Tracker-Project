@@ -90,6 +90,5 @@ public class GoalDetailScreen implements ActionListener {
 
         frame.dispose();
 
-
     }
 }
