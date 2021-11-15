@@ -42,6 +42,9 @@ public class Goal implements Writable {
         return currentHours;
     }
 
+    // EFFECTS: returns target hours
+    public int getTargetHours() { return  targetHours;}
+
     // REQUIRES: amount >= 0
     // MODIFIES: this
     // EFFECTS: amount is added to progress and progress is returned
