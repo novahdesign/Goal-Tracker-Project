@@ -43,3 +43,4 @@ persistence, graphical user interface, and design.
 ### Phase 2
 - As a user, I want to be able to save my goal tracker with the progress so far on each goal on quitting the application. 
 - As a user, I want to load my goal tracker on file on opening the application by typing view goals.
+### Phase 2

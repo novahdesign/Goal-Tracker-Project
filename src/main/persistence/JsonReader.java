@@ -62,9 +62,9 @@ public class JsonReader {
     // EFFECTS: parses goal from JSON object and adds it to goalTracker
     private void addGoal(GoalTracker goalTracker, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        int progress = Integer.parseInt(jsonObject.getString("progress"));
-
-        Goal newGoal = new Goal(name, progress);
+        int current  = Integer.parseInt(jsonObject.getString("current hours"));
+        int target = jsonObject.getInt("target hours");
+        Goal newGoal = new Goal(name, current, target);
         goalTracker.addGoal(newGoal);
 
     }

@@ -51,8 +51,8 @@ class JsonWriterTest extends JsonTest {
         try {
             GoalTracker goalTracker = new GoalTracker("Goal Tracker Test User");
             JsonWriter writer = new JsonWriter("./data/testWriterNormalGoalTracker.json");
-            goalTracker.addGoal(new Goal("study", 0));
-            goalTracker.addGoal(new Goal("sleep",0));
+            goalTracker.addGoal(new Goal("study", 0, 100));
+            goalTracker.addGoal(new Goal("sleep",0, 100));
 
             writer.open();
             writer.write(goalTracker);

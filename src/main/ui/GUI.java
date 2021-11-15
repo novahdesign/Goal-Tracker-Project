@@ -4,27 +4,49 @@ import sun.reflect.generics.repository.FieldRepository;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GUI {
+public class GUI implements ActionListener {
+
+    private int clicks = 0;
+    private JLabel label = new JLabel("Progress hours: 0    ");
+
 
     public GUI() {
 
         // construct the JFrame Object
         JFrame frame = new JFrame();
 
-        // construct the JButton
-        JButton button = new JButton("Welcome to GoalTracker. Click Here to Enter");
+        // construct the
+        JButton inspiration = new JButton("Inspiration");
+        JButton button = new JButton("Add Goal");
+        JButton removeGoal = new JButton("Remove Goal");
+        JButton viewGoals = new JButton("View Goals");
+        JButton addTime = new JButton("Add Time");
+        JButton saveAndQuit = new JButton("Save & Quit");
+
+        button.addActionListener(this);
 
         JPanel panel = new JPanel();
         // set border of the panel
-        panel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 50));
         panel.setLayout(new GridLayout(1,1));
+        panel.add(label);
 
-        Color background = new Color(255, 192, 203);
+        Color background = new Color(255, 123, 211);
         panel.setBackground(background);
 
         panel.add(button);
         button.setBackground(new Color(234, 203, 255));
+
+        panel.add(inspiration);
+        button.setBackground(new Color(234, 203, 255));
+
+        panel.add(removeGoal);
+        panel.add(viewGoals);
+        panel.add(addTime);
+        panel.add(saveAndQuit);
 
         // set the panel border layout
         frame.add(panel, BorderLayout.CENTER);
@@ -33,26 +55,15 @@ public class GUI {
         frame.pack();
         frame.setVisible(true);
 
-        // gradient
 
-//            Color color1 = Color.RED;
-//            Color color2 = Color.GREEN;
-//
-//            int w = panel.getWidth();
-//            int h = panel.getHeight();
-//
-//
-//            g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-//
-//
-//            GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
-//            g2d.setPaint(gp);
-//            g2d.fillRect(0, 0, w, h);
-//
-//            GradientPaint gradient = new GradientPaint(0,0, background, 0, h, 0)
-//
     }
 
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        clicks++;
+        label.setText("Progress hours: " + clicks);
+
+    }
 }

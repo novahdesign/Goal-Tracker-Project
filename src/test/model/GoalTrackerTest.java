@@ -19,7 +19,7 @@ public class GoalTrackerTest {
 
     @Test
     void testAddGoalTracker() {
-        Goal g1 = new Goal("study", 0);
+        Goal g1 = new Goal("study", 0, 100);
         testList.addGoal(g1);
         assertEquals(1, testList.getGoalList().size());
 
@@ -27,15 +27,15 @@ public class GoalTrackerTest {
 
     @Test
     void testRemoveGoalTracker() {
-        Goal g1 = new Goal("exercise", 3);
+        Goal g1 = new Goal("exercise", 3, 100);
         testList.removeGoal(g1);
         assertEquals(0, testList.getGoalList().size());
     }
 
     @Test
     void testGetGoalList() {
-        Goal g1 = new Goal("sleep", 1);
-        Goal g2 = new Goal("study", 2);
+        Goal g1 = new Goal("sleep", 1, 100);
+        Goal g2 = new Goal("study", 2, 100);
         testList.addGoal(g1);
         testList.addGoal(g2);
         assertEquals(2, testList.getGoalList().size());
@@ -47,7 +47,7 @@ public class GoalTrackerTest {
     @Test
     void testGetLength() {
         assertEquals(0, testList.getLength());
-        Goal g1 = new Goal("sleep", 1);
+        Goal g1 = new Goal("sleep", 1, 0);
         testList.addGoal(g1);
         assertEquals(1, testList.getLength());
 

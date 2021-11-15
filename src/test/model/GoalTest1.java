@@ -9,20 +9,20 @@ class GoalTest {
 
     @BeforeEach
     void runBefore() {
-        testGoal = new Goal("study cpsc", 0);
+        testGoal = new Goal("study cpsc", 0, 100);
     }
 
     @Test
     void testConstructor() {
         assertEquals("study cpsc", testGoal.getName());
-        assertEquals(0, testGoal.getProgress());
+        assertEquals(0, testGoal.getCurrentHours());
         assertTrue(testGoal.getId() > 0);
     }
 
     @Test
     void testAddTime(){
         testGoal.addTime(20);
-        assertEquals(20,testGoal.getProgress());
+        assertEquals(20,testGoal.getCurrentHours());
 
     }
 
@@ -30,26 +30,26 @@ class GoalTest {
     void testMultipleAddTime() {
         testGoal.addTime(2);
         testGoal.addTime(3);
-        assertEquals(5,testGoal.getProgress());
+        assertEquals(5,testGoal.getCurrentHours());
     }
 
     @Test
-    void testGetProgress() {
+    void testGetCurrent() {
         testGoal.addTime(4);
-        assertEquals(4, testGoal.getProgress());
+        assertEquals(4, testGoal.getCurrentHours());
     }
 
     // Tests if initial progress is negative, return 0 if true
     @Test
     void testNegGetProgress() {
-        Goal testNegGoal = new Goal("negative", -3);
-        assertEquals(0, testNegGoal.getProgress());
+        Goal testNegGoal = new Goal("negative", -3, 100);
+        assertEquals(0, testNegGoal.getCurrentHours());
     }
 
     @Test
-    void testTrackProgress() {
-        testGoal.addTime(0);
-        assertEquals(0, testGoal.trackProgress(0));
+    void testGetProgress() {
+        testGoal.addTime(10);
+        assertEquals(10, testGoal.getProgress());
 
     }
 

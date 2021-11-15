@@ -114,7 +114,10 @@ public class GoalTrackerApp {
     // EFFECTS: prints goal name and goal progress from list of goals
     private void doViewGoals() {
         for (Goal goal : goalTracker.getGoalList()) {
-            System.out.println(goal.getName() + ", " + goal.getProgress());
+            double p = goal.getProgress();
+
+            System.out.println(goal.getName() + ", Current Hours:" + goal.getCurrentHours() + ", Progress:" +
+                    goal.getProgress());
         }
     }
 
@@ -153,13 +156,13 @@ public class GoalTrackerApp {
         System.out.println("Enter name of the goal:");
         String name = input.next();
 
-        System.out.println("Enter progress so far:");
-        int progress = input.nextInt();
+        System.out.println("Enter target hours:");
+        int target = input.nextInt();
 
         System.out.println("Added a goal! ");
-        System.out.println("Name: " + name + " " + "Progress: " + progress);
+        System.out.println("Name: " + name + " " + "Target: " + target);
 
-        Goal g = new Goal(name, progress);
+        Goal g = new Goal(name, 0, target);
         goalTracker.addGoal(g);
 
 
@@ -189,7 +192,7 @@ public class GoalTrackerApp {
     // EFFECTS: prints the progress of a goal
     private void printProgress(Goal selected) {
         System.out.println("Goal: " + selected.getName());
-        System.out.printf("Progress: %2d hours\n", selected.getProgress());
+        System.out.printf("Progress: %2f hours\n", selected.getProgress());
     }
 
 

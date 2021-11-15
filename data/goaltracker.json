@@ -1,17 +1,8 @@
 {
     "user": "Default User",
-    "goals": [
-        {
-            "name": "study",
-            "progress": "10"
-        },
-        {
-            "name": "sleep",
-            "progress": "10"
-        },
-        {
-            "name": "excercise",
-            "progress": "2"
-        }
-    ]
+    "goals": [{
+        "target hours": 50,
+        "name": "sleep",
+        "current hours": "40"
+    }]
 }
