@@ -1,0 +1,38 @@
+package ui.components;
+
+import model.Goal;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+public class InspirationScreen {
+
+    public InspirationScreen() throws IOException {
+
+        JFrame frame = new JFrame();
+        frame.setSize(1000, 1000);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        BufferedImage myPicture =
+                ImageIO.read(new File("C:\\Users\\Anova Hou\\IdeaProjects\\project_s6y5s\\data\\tobs.jpg"));
+        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+        frame.add(picLabel);
+
+        frame.setVisible(true);
+
+    }
+
+    public static void main(String[] args) {
+        try {
+            new InspirationScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

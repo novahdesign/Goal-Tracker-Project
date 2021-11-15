@@ -7,7 +7,9 @@ import ui.components.GoalDetailScreen;
 public class Main {
     public static void main(String[] args) {
       //  new GoalTrackerApp();
-        new GoalDetailScreen(new Goal("Testing Goal", 25,160));
+        Goal initGoal = new Goal("Testing Goal", 25,160);
+        new GoalDetailScreen(initGoal);
+        System.out.println(initGoal.getName());
        // new TextDemo();
     }
 }

@@ -87,8 +87,8 @@ public class GoalDetailScreen implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        newGoal = new Goal(nameText.getName(), Integer.parseInt(currentText.getText()),
-                Integer.parseInt(targetText.getText()));
+        this.goal = getNewGoal();
+        this.goal.setName(nameText.getText());
 
         frame.dispose();
 

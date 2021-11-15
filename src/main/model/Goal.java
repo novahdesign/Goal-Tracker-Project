@@ -7,6 +7,11 @@ import persistence.Writable;
 public class Goal implements Writable {
     private static int nextGoalID = 1;
     private int id;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String name;
     private int currentHours;
     private int targetHours;
