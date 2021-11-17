@@ -2,6 +2,8 @@ package ui.components;
 
 import model.Goal;
 import model.GoalTracker;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
@@ -9,15 +11,34 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GoalTrackerScreen extends DefaultListModel implements ActionListener  {
 
-    GoalTracker goalTracker;
     Goal goal;
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private static final String JSON_LOC = "./data/goaltracker.json";
+
+
+
+    private List<Goal> goalList = new ArrayList<>();
+    private String user = null;
+
+    public void setGoalList(List<Goal> goalList) {
+        this.goalList = goalList;
+    }
+
+    public List<Goal> getGoalList() {
+        return goalList;
+    }
+
     JList testList;
     DefaultListModel listModel;
     JTextField goalName;
@@ -35,9 +56,12 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     JScrollPane listScrollPane = getScrollList();
 
+    GoalTracker goalTracker = new GoalTracker();
+
 
 
     public GoalTrackerScreen() throws MalformedURLException {
+
 
         JFrame frame = new JFrame();
         frame.setSize(530, 500);
@@ -66,14 +90,18 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     
     private JScrollPane getScrollList() {
 
+        Goal testGoal = new Goal("Finish Phase 3", 10, 100);
+
         listModel = new DefaultListModel();
 
-        listModel.addElement("Jane Doe");
+        listModel.addElement(testGoal.getName());
+        listModel.addElement(testGoal.getProgress());
+
         listModel.addElement("John Smith");
         listModel.addElement("Kathy Green");
 
         testList = new JList(listModel);
-        testList.setVisibleRowCount(5);
+        testList.setVisibleRowCount(15);
 
         JScrollPane scrollList = new JScrollPane(testList);
         scrollList.setBounds(215, 90,240,200);
@@ -85,6 +113,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     private JButton getSaveButton() {
         JButton saveButton = new JButton("Save");
         saveButton.setBounds(40, 210, 165, 25);
+        saveButton.setActionCommand("saveButton");
         return saveButton;
     }
 
@@ -147,7 +176,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         Goal goal = new Goal("test", 20, 100);
 
         if ("addGoal".equals(e.getActionCommand())) {
-            addNewGoal(goal);
+            doAddNewGoal();
         } else if ("inspireButton".equals(e.getActionCommand())) {
             try {
                 new InspirationScreen();
@@ -156,25 +185,62 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             }
         } else if ("editGoalButton".equals(e.getActionCommand())) {
             new GoalDetailScreen(goal, goalTracker);
+        } else if ("saveButton".equals(e.getActionCommand())) {
+            saveGoalTrackerScreen();
         }
 
     }
 
+    private ActionListener saveGoalTrackerScreen() {
+        try {
+            jsonWriter.write(goalTracker);
+            System.out.println("Saved " + goalTracker.getUser() + " to " + JSON_LOC);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_LOC);
+        }
 
-    private ActionListener addNewGoal(Goal goal) {
-        Goal emptyGoal = new Goal("", 0, 100);
-        GoalTracker goalTrackerTest = new GoalTracker("Default User");
+        return goalTrackerScreen;
+    }
 
-        new GoalDetailScreen(emptyGoal, goalTrackerTest);
 
-        String name = this.goal.getText();
-        int current = this.goal.getCurrentHours();
-        int target = this.goal.getTargetHours();
+    private ActionListener doAddNewGoal() {
+
+        Goal goal = new Goal("enter name",0,100);
+   //     GoalTracker goalTracker = new GoalTracker();
+
+        new GoalDetailScreen(goal, goalTracker);
+
+        System.out.println("Enter name of the goal:");
+        String name = goal.getName();
+
+        System.out.println("Enter target hours:");
+        int target = goal.getTargetHours();
+
+        int current = goal.getCurrentHours();
 
         Goal g = new Goal(name, current, target);
-        goalTrackerTest.addGoal(g);
+        goalTracker.addGoal(g);
+        listModel.addElement(g.getName());
 
-        return new GoalDetailScreen(g, goalTrackerTest);
+        System.out.println("Added a goal! ");
+        System.out.println("Name: " + name + " " + "Target: " + target);
+
+        return new GoalDetailScreen(g, goalTracker);
+
+//        new GoalDetailScreen(emptyGoal, goalTracker);
+//
+//        emptyGoal.setName(emptyGoal.getName());
+//        emptyGoal.setCurrentHours(emptyGoal.getCurrentHours());
+//        emptyGoal.setTargetHours(emptyGoal.getTargetHours());
+//
+//
+////        String name = this.goal.getName();
+////        int current = this.goal.getCurrentHours();
+////        int target = this.goal.getTargetHours();
+////
+//        goalTracker.addGoal(emptyGoal);
+//
+//        return new GoalDetailScreen(emptyGoal, goalTracker);
 
     }
 

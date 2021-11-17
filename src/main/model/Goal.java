@@ -13,6 +13,15 @@ public class Goal implements Writable {
     }
 
     private String name;
+
+    public void setCurrentHours(int currentHours) {
+        this.currentHours = currentHours;
+    }
+
+    public void setTargetHours(int targetHours) {
+        this.targetHours = targetHours;
+    }
+
     private int currentHours;
     private int targetHours;
 

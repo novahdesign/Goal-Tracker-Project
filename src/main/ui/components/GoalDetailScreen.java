@@ -18,6 +18,12 @@ public class GoalDetailScreen implements ActionListener {
     private JTextField targetText;
     private JTextField currentText;
 
+    public JProgressBar getProgressBar() {
+        return progressBar;
+    }
+
+    private JProgressBar progressBar;
+
 
     public JTextField getNameText() {
         return nameText;
@@ -89,10 +95,7 @@ public class GoalDetailScreen implements ActionListener {
         progressLabel.setBounds(10, 110, 80, 25);
         panel.add(progressLabel);
 
-        JProgressBar progressBar = new JProgressBar(SwingConstants.HORIZONTAL);
-        progressBar.setBounds(100, 110, 165, 25);
-        progressBar.setValue((int) goal.getProgress());
-        progressBar.setStringPainted(true);
+        progressBar = createProgressBar(goal);
         panel.add(progressBar);
 
         JButton saveButton = new JButton("Save and Back");
@@ -103,6 +106,18 @@ public class GoalDetailScreen implements ActionListener {
 
         frame.setVisible(true);
 
+    }
+
+    public Goal getGoal() {
+        return goal;
+    }
+
+    public JProgressBar createProgressBar(Goal goal) {
+        JProgressBar progressBar = new JProgressBar(SwingConstants.HORIZONTAL);
+        progressBar.setBounds(100, 110, 165, 25);
+        progressBar.setValue((int) goal.getProgress());
+        progressBar.setStringPainted(true);
+        return progressBar;
     }
 
     private JLabel nameLabel() {
@@ -121,6 +136,14 @@ public class GoalDetailScreen implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         this.goal = getNewGoal();
         this.goal.setName(nameText.getText());
+        this.goal.setTargetHours(Integer.parseInt(targetText.getText()));
+        this.goal.setCurrentHours(Integer.parseInt(currentText.getText()));
+
+        System.out.println(goal.getName());
+        System.out.println(goal.getCurrentHours());
+        System.out.println(goal.getTargetHours());
+        System.out.println(goal.getProgress());
+       // System.out.println(goalTracker.getGoalList());
 
         frame.dispose();
 
