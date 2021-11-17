@@ -1,5 +1,6 @@
 package ui;
 
+import com.sun.glass.ui.Application;
 import model.Goal;
 import model.GoalTracker;
 import persistence.JsonReader;
@@ -153,6 +154,7 @@ public class GoalTrackerApp {
     // MODIFIES: this
     // EFFECTS: adds a goal to the list of goals
     private void doAddGoal() {
+
         System.out.println("Enter name of the goal:");
         String name = input.next();
 

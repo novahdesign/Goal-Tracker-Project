@@ -1,5 +1,6 @@
 package ui.components;
 
+import ui.components.GoalDetailScreen;
 import model.Goal;
 import model.GoalTracker;
 import org.json.JSONArray;
@@ -41,7 +42,6 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     JList testList;
     DefaultListModel listModel;
-    JTextField goalName;
 
     GoalTrackerScreen goalTrackerScreen;
     JPanel panel;
@@ -56,8 +56,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     JScrollPane listScrollPane = getScrollList();
 
-    GoalTracker goalTracker = new GoalTracker();
-
+    GoalTracker goalTracker = new GoalTracker("Default User");
 
 
     public GoalTrackerScreen() throws MalformedURLException {
@@ -65,8 +64,6 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         jsonReader = new JsonReader(JSON_LOC);
         // loadGoalTracker();
         jsonWriter = new JsonWriter(JSON_LOC);
-
-
 
         JFrame frame = new JFrame();
         frame.setSize(530, 500);
@@ -90,26 +87,25 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
         frame.setVisible(true);
 
-
     }
-    
+
     private JScrollPane getScrollList() {
 
         Goal testGoal = new Goal("Finish Phase 3", 10, 100);
 
         listModel = new DefaultListModel();
-
-        listModel.addElement(testGoal.getName());
-        listModel.addElement(testGoal.getProgress());
-
-        listModel.addElement("John Smith");
-        listModel.addElement("Kathy Green");
+//
+//        listModel.addElement(testGoal.getName());
+//        listModel.addElement(testGoal.getProgress());
+//
+//        listModel.addElement("John Smith");
+//        listModel.addElement("Kathy Green");
 
         testList = new JList(listModel);
         testList.setVisibleRowCount(15);
 
         JScrollPane scrollList = new JScrollPane(testList);
-        scrollList.setBounds(215, 90,240,200);
+        scrollList.setBounds(215, 90, 240, 200);
 
         return scrollList;
     }
@@ -159,7 +155,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         URL url = new URL("http://www.animatedgif.net/welcome/weltrain_e0.gif");
         Icon icon = new ImageIcon(url);
         JLabel welcomeGif = new JLabel(icon);
-        welcomeGif.setBounds(5,5,490,80);
+        welcomeGif.setBounds(5, 5, 490, 80);
         return welcomeGif;
     }
 
@@ -172,16 +168,21 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     }
 
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        GoalTracker goalTracker = new GoalTracker();
+    //    GoalTracker goalTracker = new GoalTracker();
 
         Goal goal = new Goal("test", 20, 100);
 
         if ("addGoal".equals(e.getActionCommand())) {
-            doAddNewGoal();
+            Goal g;
+            g = new Goal("Enter Name", 0, 100);
+            new GoalDetailScreen(g);
+
+            goalTracker.addGoal(g);
+            listModel.addElement(g.getName());
+
         } else if ("inspireButton".equals(e.getActionCommand())) {
             try {
                 new InspirationScreen();
@@ -189,7 +190,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
                 ex.printStackTrace();
             }
         } else if ("editGoalButton".equals(e.getActionCommand())) {
-            new GoalDetailScreen(goal, goalTracker);
+            new GoalDetailScreen(goal);
         } else if ("saveButton".equals(e.getActionCommand())) {
             saveGoalTrackerScreen();
         }
@@ -197,41 +198,19 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     }
 
     private ActionListener saveGoalTrackerScreen() {
-
         try {
             jsonWriter.write(goalTracker);
             System.out.println("Saved " + goalTracker.getUser() + " to " + JSON_LOC);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_LOC);
         }
-
         return goalTrackerScreen;
     }
 
-    private ActionListener doAddNewGoal() {
-
-        Goal goal = new Goal("enter name",0,100);
-   //     GoalTracker goalTracker = new GoalTracker();
-
-        new GoalDetailScreen(goal, goalTracker);
-
-        System.out.println("Enter name of the goal:");
-        String name = goal.getName();
-
-        System.out.println("Enter target hours:");
-        int target = goal.getTargetHours();
-
-        int current = goal.getCurrentHours();
-
-        Goal g = new Goal(name, current, target);
-        goalTracker.addGoal(g);
-        listModel.addElement(g.getName());
-
-        System.out.println("Added a goal! ");
-        System.out.println("Name: " + name + " " + "Target: " + target);
-
-        return new GoalDetailScreen(g, goalTracker);
-
+//
+//    private ActionListener doAddNewGoal() {
+//
+//    }
 //        new GoalDetailScreen(emptyGoal, goalTracker);
 //
 //        emptyGoal.setName(emptyGoal.getName());
@@ -247,16 +226,17 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 //
 //        return new GoalDetailScreen(emptyGoal, goalTracker);
 
-    }
+}
 
-        //
+
+//
 //            Goal emptyGoal = new Goal("", 0, 100);
 //
 //            new GoalDetailScreen(emptyGoal, goalTracker);
 //            goalTracker.getGoalList().add(goal);
 //
 //            return new GoalDetailScreen(goal, goalTracker);
-    //
+//
 //        JButton loadButton = new JButton("Load");
 //        loadButton.setBounds(20, 400, 165, 25);
 //        panel.add(loadButton);
@@ -282,10 +262,10 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 //        panel.add(saveButton);
 //
 //        frame.setVisible(true);
-
-    public static void main(String[] args) throws MalformedURLException {
-        new GoalTrackerScreen();
-    }
+//
+//    public static void main(String[] args) throws MalformedURLException {
+//        new GoalTrackerScreen();
+//    }
 
 //    public void addGoalButton() {
 //        JButton addGoal = new JButton("Add Goal");
@@ -298,4 +278,3 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
 
 
-}

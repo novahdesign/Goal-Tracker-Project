@@ -14,18 +14,7 @@ public class GoalDetailScreen implements ActionListener {
     private GoalTracker goalTracker;
     private JFrame frame;
 
-    private JTextField nameText;
-    private JTextField targetText;
-    private JTextField currentText;
-
-    public JProgressBar getProgressBar() {
-        return progressBar;
-    }
-
-    private JProgressBar progressBar;
-
-
-    public JTextField makeNameText() {
+    public JTextField getNameText() {
         return nameText;
     }
 
@@ -49,13 +38,27 @@ public class GoalDetailScreen implements ActionListener {
         this.currentText = currentText;
     }
 
+    public void setProgressBar(JProgressBar progressBar) {
+        this.progressBar = progressBar;
+    }
+
+    private JTextField nameText;
+    private JTextField targetText;
+    private JTextField currentText;
+
+    public JProgressBar getProgressBar() {
+        return progressBar;
+    }
+
+    private JProgressBar progressBar;
 
     private Goal newGoal;
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    public GoalDetailScreen(Goal goal, GoalTracker goalTracker) {
+    public GoalDetailScreen(Goal goal) {
 
         this.goal = goal;
+
         JPanel panel = new JPanel();
         frame = new JFrame();
         frame.setSize(300, 300);
@@ -71,37 +74,60 @@ public class GoalDetailScreen implements ActionListener {
         makeNameText(goal);
         panel.add(nameText);
 
-        JLabel targetLabel = new JLabel("Target Hours");
-        targetLabel.setBounds(10, 50, 80, 25);
+        JLabel targetLabel = makeJLabel();
         panel.add(targetLabel);
 
         makeTargetText(goal);
         panel.add(targetText);
 
-        JLabel currentLabel = new JLabel("Current Hours");
-        currentLabel.setBounds(10, 80, 80, 25);
+        JLabel currentLabel = makeCurrentLabel();
         panel.add(currentLabel);
 
-        currentText = new JTextField(20);
-        currentText.setBounds(100, 80, 165, 25);
-        currentText.setText(String.valueOf(goal.getCurrentHours()));
-        panel.add(currentText);
+        makeCurrentHoursText(goal, panel);
 
-        JLabel progressLabel = new JLabel("Progress");
-        progressLabel.setBounds(10, 110, 80, 25);
-        panel.add(progressLabel);
+        makeProgressLabel(panel);
 
         progressBar = createProgressBar(goal);
         panel.add(progressBar);
 
-        JButton saveButton = new JButton("Save and Back");
-        saveButton.setBounds(50, 140, 165, 25);
-        panel.add(saveButton);
+        JButton saveButton = makeSaveButton(panel);
 
         saveButton.addActionListener(this);
 
         frame.setVisible(true);
 
+    }
+
+    private JButton makeSaveButton(JPanel panel) {
+        JButton saveButton = new JButton("Save and Back");
+        saveButton.setBounds(50, 140, 165, 25);
+        panel.add(saveButton);
+        return saveButton;
+    }
+
+    private void makeProgressLabel(JPanel panel) {
+        JLabel progressLabel = new JLabel("Progress");
+        progressLabel.setBounds(10, 110, 80, 25);
+        panel.add(progressLabel);
+    }
+
+    private void makeCurrentHoursText(Goal goal, JPanel panel) {
+        currentText = new JTextField(20);
+        currentText.setBounds(100, 80, 165, 25);
+        currentText.setText(String.valueOf(goal.getCurrentHours()));
+        panel.add(currentText);
+    }
+
+    private JLabel makeCurrentLabel() {
+        JLabel currentLabel = new JLabel("Current Hours");
+        currentLabel.setBounds(10, 80, 80, 25);
+        return currentLabel;
+    }
+
+    private JLabel makeJLabel() {
+        JLabel targetLabel = new JLabel("Target Hours");
+        targetLabel.setBounds(10, 50, 80, 25);
+        return targetLabel;
     }
 
     private void makeTargetText(Goal goal) {
@@ -131,6 +157,7 @@ public class GoalDetailScreen implements ActionListener {
     private JLabel nameLabel() {
         JLabel nameLabel = new JLabel("Goal Name");
         nameLabel.setBounds(10, 20, 80, 25);
+
         return nameLabel;
     }
 
@@ -142,7 +169,9 @@ public class GoalDetailScreen implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         this.goal = getNewGoal();
+
         this.goal.setName(nameText.getText());
         this.goal.setTargetHours(Integer.parseInt(targetText.getText()));
         this.goal.setCurrentHours(Integer.parseInt(currentText.getText()));
@@ -151,6 +180,7 @@ public class GoalDetailScreen implements ActionListener {
         System.out.println(goal.getCurrentHours());
         System.out.println(goal.getTargetHours());
         System.out.println(goal.getProgress());
+
         // System.out.println(goalTracker.getGoalList());
 
         frame.dispose();

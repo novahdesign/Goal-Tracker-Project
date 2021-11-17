@@ -1,5 +1,30 @@
-{"goals": [{
-    "target hours": 100,
-    "name": "enter name",
-    "current hours": "0"
-}]}
+{
+    "user": "Default User",
+    "goals": [
+        {
+            "target hours": 100,
+            "name": "Enter Name",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter Name",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter Name",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter Name",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter Name",
+            "current hours": "0"
+        }
+    ]
+}
