@@ -19,34 +19,18 @@ public class GoalTrackerScreen implements ActionListener {
         JFrame frame = new JFrame();
         frame.setSize(1000, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         panel = new JPanel();
         frame.add(panel);
 
-        JButton loadButton = new JButton("Load");
-        loadButton.setBounds(20, 400, 165, 25);
+        JButton loadButton = getLoadButton();
         panel.add(loadButton);
-
-        JButton inspireButton = new JButton("Inspiration");
-        inspireButton.setBounds(60, 90, 165, 25);
+        JButton inspireButton = getInspireButton();
         panel.add(inspireButton);
-        inspireButton.setActionCommand("inspireButton");
-
-        inspireButton.addActionListener(this);
-
-        JButton addGoal = new JButton("Add Goal");
-        addGoal.setBounds(40, 90, 165, 25);
+        JButton addGoal = getAddGoalButton();
         panel.add(addGoal);
-        addGoal.setActionCommand("addGoal");
-
-        addGoal.addActionListener(this);
-
-        JButton editGoalButton = new JButton("Edit Goal");
-        editGoalButton.setBounds(80, 90, 165, 25);
+        JButton editGoalButton = getEditGoalButton();
         panel.add(editGoalButton);
-        editGoalButton.setActionCommand("editGoalButton");
 
-        editGoalButton.addActionListener(this);
 
         JButton saveButton = new JButton("Save");
         saveButton.setBounds(100, 90, 165, 25);
@@ -55,6 +39,38 @@ public class GoalTrackerScreen implements ActionListener {
         frame.setVisible(true);
 
 
+    }
+
+    private JButton getEditGoalButton() {
+        JButton editGoalButton = new JButton("Edit Goal");
+        editGoalButton.setBounds(80, 90, 165, 25);
+        editGoalButton.setActionCommand("editGoalButton");
+
+        editGoalButton.addActionListener(this);
+        return editGoalButton;
+    }
+
+    private JButton getAddGoalButton() {
+        JButton addGoal = new JButton("Add Goal");
+        addGoal.setBounds(40, 90, 165, 25);
+        addGoal.addActionListener(this);
+        addGoal.setActionCommand("addGoal");
+        return addGoal;
+    }
+
+    private JButton getInspireButton() {
+        JButton inspireButton = new JButton("Inspiration");
+        inspireButton.setBounds(60, 90, 165, 25);
+        inspireButton.setActionCommand("inspireButton");
+        inspireButton.addActionListener(this);
+
+        return inspireButton;
+    }
+
+    private JButton getLoadButton() {
+        JButton loadButton = new JButton("Load");
+        loadButton.setBounds(20, 400, 165, 25);
+        return loadButton;
     }
 //
 //    public void loadButton() {
