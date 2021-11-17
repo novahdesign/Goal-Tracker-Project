@@ -16,6 +16,8 @@ import java.util.List;
 
 public class GoalTrackerScreen extends DefaultListModel implements ActionListener  {
 
+    GoalTracker goalTracker;
+    Goal goal;
     JList testList;
     DefaultListModel listModel;
     JTextField goalName;
@@ -63,7 +65,6 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     }
     
     private JScrollPane getScrollList() {
-
 
         listModel = new DefaultListModel();
 
@@ -140,13 +141,13 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Goal emptyGoal = new Goal("", 0, 100);
+
         GoalTracker goalTracker = new GoalTracker();
 
         Goal goal = new Goal("test", 20, 100);
 
         if ("addGoal".equals(e.getActionCommand())) {
-            addNewGoal();
+            addNewGoal(goal);
         } else if ("inspireButton".equals(e.getActionCommand())) {
             try {
                 new InspirationScreen();
@@ -159,11 +160,32 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     }
 
-    private ActionListener addNewGoal() {
-        return null;
+
+    private ActionListener addNewGoal(Goal goal) {
+        Goal emptyGoal = new Goal("", 0, 100);
+        GoalTracker goalTrackerTest = new GoalTracker("Default User");
+
+        new GoalDetailScreen(emptyGoal, goalTrackerTest);
+
+        String name = this.goal.getText();
+        int current = this.goal.getCurrentHours();
+        int target = this.goal.getTargetHours();
+
+        Goal g = new Goal(name, current, target);
+        goalTrackerTest.addGoal(g);
+
+        return new GoalDetailScreen(g, goalTrackerTest);
+
     }
 
+        //
+//            Goal emptyGoal = new Goal("", 0, 100);
 //
+//            new GoalDetailScreen(emptyGoal, goalTracker);
+//            goalTracker.getGoalList().add(goal);
+//
+//            return new GoalDetailScreen(goal, goalTracker);
+    //
 //        JButton loadButton = new JButton("Load");
 //        loadButton.setBounds(20, 400, 165, 25);
 //        panel.add(loadButton);

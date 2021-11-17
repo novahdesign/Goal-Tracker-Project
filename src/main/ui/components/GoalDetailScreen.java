@@ -11,11 +11,38 @@ import java.awt.event.ActionListener;
 public class GoalDetailScreen implements ActionListener {
 
     private Goal goal;
+    private GoalTracker goalTracker;
     private JFrame frame;
 
     private JTextField nameText;
     private JTextField targetText;
     private JTextField currentText;
+
+
+    public JTextField getNameText() {
+        return nameText;
+    }
+
+    public void setNameText(JTextField nameText) {
+        this.nameText = nameText;
+    }
+
+    public JTextField getTargetText() {
+        return targetText;
+    }
+
+    public void setTargetText(JTextField targetText) {
+        this.targetText = targetText;
+    }
+
+    public JTextField getCurrentText() {
+        return currentText;
+    }
+
+    public void setCurrentText(JTextField currentText) {
+        this.currentText = currentText;
+    }
+
 
     private Goal newGoal;
 

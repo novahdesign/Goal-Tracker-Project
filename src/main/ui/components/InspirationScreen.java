@@ -22,7 +22,7 @@ public class InspirationScreen {
         frame.add(panel);
 
         BufferedImage myPicture =
-                ImageIO.read(new File("C:\\Users\\Anova Hou\\IdeaProjects\\project_s6y5s\\data\\giphy (8).gif"));
+                ImageIO.read(new File("D:\\GIFS\\gaslight-gatekeep-girlboss.jpg"));
 
 
 
