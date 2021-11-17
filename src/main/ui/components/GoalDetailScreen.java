@@ -1,6 +1,7 @@
 package ui.components;
 
 import model.Goal;
+import model.GoalTracker;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +12,7 @@ public class GoalDetailScreen implements ActionListener {
 
     private Goal goal;
     private JFrame frame;
+
     private JTextField nameText;
     private JTextField targetText;
     private JTextField currentText;
@@ -18,10 +20,9 @@ public class GoalDetailScreen implements ActionListener {
     private Goal newGoal;
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    public GoalDetailScreen(Goal goal) {
+    public GoalDetailScreen(Goal goal, GoalTracker goalTracker) {
 
         this.goal = goal;
-
         JPanel panel = new JPanel();
         frame = new JFrame();
         frame.setSize(300, 300);
@@ -32,9 +33,7 @@ public class GoalDetailScreen implements ActionListener {
         Color background = new Color(255, 123, 211);
         panel.setBackground(background);
 
-        JLabel nameLabel = new JLabel("Goal Name");
-        nameLabel.setBounds(10, 20, 80, 25);
-        panel.add(nameLabel);
+        panel.add(nameLabel());
 
         nameText = new JTextField(20);
         nameText.setBounds(100, 20, 165, 25);
@@ -77,6 +76,12 @@ public class GoalDetailScreen implements ActionListener {
 
         frame.setVisible(true);
 
+    }
+
+    private JLabel nameLabel() {
+        JLabel nameLabel = new JLabel("Goal Name");
+        nameLabel.setBounds(10, 20, 80, 25);
+        return nameLabel;
     }
 
     public Goal getNewGoal() {
