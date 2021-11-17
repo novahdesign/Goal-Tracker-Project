@@ -2,6 +2,8 @@ package ui.components;
 
 import model.Goal;
 import model.GoalTracker;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -18,15 +20,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoalTrackerScreen extends DefaultListModel implements ActionListener  {
+public class GoalTrackerScreen extends DefaultListModel implements ActionListener, Writable {
 
     Goal goal;
 
+    private static final String JSON_LOC = "./data/goaltracker.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private static final String JSON_LOC = "./data/goaltracker.json";
-
-
 
     private List<Goal> goalList = new ArrayList<>();
     private String user = null;
@@ -61,6 +61,11 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
 
     public GoalTrackerScreen() throws MalformedURLException {
+
+        jsonReader = new JsonReader(JSON_LOC);
+        // loadGoalTracker();
+        jsonWriter = new JsonWriter(JSON_LOC);
+
 
 
         JFrame frame = new JFrame();
@@ -114,6 +119,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         JButton saveButton = new JButton("Save");
         saveButton.setBounds(40, 210, 165, 25);
         saveButton.setActionCommand("saveButton");
+        saveButton.addActionListener(this);
         return saveButton;
     }
 
@@ -121,7 +127,6 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         JButton editGoalButton = new JButton("Edit Goal");
         editGoalButton.setBounds(40, 180, 165, 25);
         editGoalButton.setActionCommand("editGoalButton");
-
         editGoalButton.addActionListener(this);
         return editGoalButton;
     }
@@ -192,6 +197,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     }
 
     private ActionListener saveGoalTrackerScreen() {
+
         try {
             jsonWriter.write(goalTracker);
             System.out.println("Saved " + goalTracker.getUser() + " to " + JSON_LOC);
@@ -201,7 +207,6 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
         return goalTrackerScreen;
     }
-
 
     private ActionListener doAddNewGoal() {
 

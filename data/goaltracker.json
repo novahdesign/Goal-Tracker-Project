@@ -1,8 +1,5 @@
-{
-    "user": "Default User",
-    "goals": [{
-        "target hours": 50,
-        "name": "sleep",
-        "current hours": "40"
-    }]
-}
+{"goals": [{
+    "target hours": 100,
+    "name": "enter name",
+    "current hours": "0"
+}]}

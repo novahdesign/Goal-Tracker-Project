@@ -25,7 +25,7 @@ public class GoalDetailScreen implements ActionListener {
     private JProgressBar progressBar;
 
 
-    public JTextField getNameText() {
+    public JTextField makeNameText() {
         return nameText;
     }
 
@@ -68,18 +68,14 @@ public class GoalDetailScreen implements ActionListener {
 
         panel.add(nameLabel());
 
-        nameText = new JTextField(20);
-        nameText.setBounds(100, 20, 165, 25);
-        nameText.setText(goal.getName());
+        makeNameText(goal);
         panel.add(nameText);
 
         JLabel targetLabel = new JLabel("Target Hours");
         targetLabel.setBounds(10, 50, 80, 25);
         panel.add(targetLabel);
 
-        targetText = new JTextField(20);
-        targetText.setBounds(100, 50, 165, 25);
-        targetText.setText(String.valueOf(goal.getTargetHours()));
+        makeTargetText(goal);
         panel.add(targetText);
 
         JLabel currentLabel = new JLabel("Current Hours");
@@ -106,6 +102,18 @@ public class GoalDetailScreen implements ActionListener {
 
         frame.setVisible(true);
 
+    }
+
+    private void makeTargetText(Goal goal) {
+        targetText = new JTextField(20);
+        targetText.setBounds(100, 50, 165, 25);
+        targetText.setText(String.valueOf(goal.getTargetHours()));
+    }
+
+    private void makeNameText(Goal goal) {
+        nameText = new JTextField(20);
+        nameText.setBounds(100, 20, 165, 25);
+        nameText.setText(goal.getName());
     }
 
     public Goal getGoal() {
@@ -143,7 +151,7 @@ public class GoalDetailScreen implements ActionListener {
         System.out.println(goal.getCurrentHours());
         System.out.println(goal.getTargetHours());
         System.out.println(goal.getProgress());
-       // System.out.println(goalTracker.getGoalList());
+        // System.out.println(goalTracker.getGoalList());
 
         frame.dispose();
 

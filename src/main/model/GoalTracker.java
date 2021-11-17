@@ -72,7 +72,7 @@ public class GoalTracker implements Writable {
 
 
     // EFFECTS: returns goals in this goal tracker as a JSON array
-    private JSONArray goalsToJson() {
+    public JSONArray goalsToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Goal goal : goalList) {
