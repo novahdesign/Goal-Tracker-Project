@@ -4,46 +4,92 @@ import model.Goal;
 import model.GoalTracker;
 
 import javax.swing.*;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
-public class GoalTrackerScreen implements ActionListener {
+public class GoalTrackerScreen extends DefaultListModel implements ActionListener  {
+
+    JList testList;
+    DefaultListModel listModel;
+    JTextField goalName;
 
     GoalTrackerScreen goalTrackerScreen;
-
     JPanel panel;
 
-    public GoalTrackerScreen() {
+    JLabel welcome = getWelcomeGif();
+    JLabel moon = getMoonGif();
+    JButton loadButton = getLoadButton();
+    JButton inspireButton = getInspireButton();
+    JButton addGoalButton = getAddGoalButton();
+    JButton editGoalButton = getEditGoalButton();
+    JButton saveButton = getSaveButton();
+
+    JScrollPane listScrollPane = getScrollList();
+
+
+
+    public GoalTrackerScreen() throws MalformedURLException {
 
         JFrame frame = new JFrame();
-        frame.setSize(1000, 500);
+        frame.setSize(530, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         panel = new JPanel();
+        panel.setLayout(null);
+
         frame.add(panel);
+        panel.setBackground(new Color(255, 211, 242));
 
-        JButton loadButton = getLoadButton();
+        panel.add(welcome);
+        panel.add(moon);
         panel.add(loadButton);
-        JButton inspireButton = getInspireButton();
         panel.add(inspireButton);
-        JButton addGoal = getAddGoalButton();
-        panel.add(addGoal);
-        JButton editGoalButton = getEditGoalButton();
+        panel.add(addGoalButton);
         panel.add(editGoalButton);
-
-
-        JButton saveButton = new JButton("Save");
-        saveButton.setBounds(100, 90, 165, 25);
         panel.add(saveButton);
+
+        panel.add(listScrollPane);
 
         frame.setVisible(true);
 
 
     }
+    
+    private JScrollPane getScrollList() {
+
+
+        listModel = new DefaultListModel();
+
+        listModel.addElement("Jane Doe");
+        listModel.addElement("John Smith");
+        listModel.addElement("Kathy Green");
+
+        testList = new JList(listModel);
+        testList.setVisibleRowCount(5);
+
+        JScrollPane scrollList = new JScrollPane(testList);
+        scrollList.setBounds(215, 90,240,200);
+
+        return scrollList;
+    }
+
+
+    private JButton getSaveButton() {
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(40, 210, 165, 25);
+        return saveButton;
+    }
 
     private JButton getEditGoalButton() {
         JButton editGoalButton = new JButton("Edit Goal");
-        editGoalButton.setBounds(80, 90, 165, 25);
+        editGoalButton.setBounds(40, 180, 165, 25);
         editGoalButton.setActionCommand("editGoalButton");
 
         editGoalButton.addActionListener(this);
@@ -52,7 +98,7 @@ public class GoalTrackerScreen implements ActionListener {
 
     private JButton getAddGoalButton() {
         JButton addGoal = new JButton("Add Goal");
-        addGoal.setBounds(40, 90, 165, 25);
+        addGoal.setBounds(40, 150, 165, 25);
         addGoal.addActionListener(this);
         addGoal.setActionCommand("addGoal");
         return addGoal;
@@ -60,7 +106,7 @@ public class GoalTrackerScreen implements ActionListener {
 
     private JButton getInspireButton() {
         JButton inspireButton = new JButton("Inspiration");
-        inspireButton.setBounds(60, 90, 165, 25);
+        inspireButton.setBounds(40, 120, 165, 25);
         inspireButton.setActionCommand("inspireButton");
         inspireButton.addActionListener(this);
 
@@ -69,14 +115,28 @@ public class GoalTrackerScreen implements ActionListener {
 
     private JButton getLoadButton() {
         JButton loadButton = new JButton("Load");
-        loadButton.setBounds(20, 400, 165, 25);
+        loadButton.setBounds(40, 90, 165, 25);
         return loadButton;
     }
-//
-//    public void loadButton() {
-//        JButton loadButton = new JButton("Load");
-//        loadButton.setBounds(20, 400, 165, 25);
-//        panel.add(loadButton);
+
+    private JLabel getWelcomeGif() throws MalformedURLException {
+
+        URL url = new URL("http://www.animatedgif.net/welcome/weltrain_e0.gif");
+        Icon icon = new ImageIcon(url);
+        JLabel welcomeGif = new JLabel(icon);
+        welcomeGif.setBounds(5,5,490,80);
+        return welcomeGif;
+    }
+
+    private JLabel getMoonGif() throws MalformedURLException {
+
+        URL moonUrl = new URL("https://media1.giphy.com/media/9ukPOCS9EOEta/giphy.gif?cid=ecf05e47y8fyxri3mvpgrqhtcdgwa9pm4dhleghq3027ccje&rid=giphy.gif&ct=s");
+        Icon moonIcon = new ImageIcon(moonUrl);
+        JLabel moon = new JLabel(moonIcon);
+        return moon;
+    }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -86,7 +146,7 @@ public class GoalTrackerScreen implements ActionListener {
         Goal goal = new Goal("test", 20, 100);
 
         if ("addGoal".equals(e.getActionCommand())) {
-            new GoalDetailScreen(emptyGoal, goalTracker);
+            addNewGoal();
         } else if ("inspireButton".equals(e.getActionCommand())) {
             try {
                 new InspirationScreen();
@@ -97,6 +157,10 @@ public class GoalTrackerScreen implements ActionListener {
             new GoalDetailScreen(goal, goalTracker);
         }
 
+    }
+
+    private ActionListener addNewGoal() {
+        return null;
     }
 
 //
@@ -126,7 +190,7 @@ public class GoalTrackerScreen implements ActionListener {
 //
 //        frame.setVisible(true);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException {
         new GoalTrackerScreen();
     }
 
