@@ -1,25 +1,8 @@
 {
     "user": "Default User",
-    "goals": [
-        {
-            "target hours": 100,
-            "name": " 111111",
-            "current hours": "11"
-        },
-        {
-            "target hours": 100,
-            "name": "phase 222",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "sleep",
-            "current hours": "222"
-        },
-        {
-            "target hours": 100,
-            "name": "Enter",
-            "current hours": "0"
-        }
-    ]
+    "goals": [{
+        "target hours": 100,
+        "name": "Finish Phase 3",
+        "current hours": "70"
+    }]
 }

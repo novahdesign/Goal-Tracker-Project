@@ -72,14 +72,15 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         jsonWriter = new JsonWriter(JSON_LOC);
 
         JFrame frame = new JFrame();
-        frame.setSize(530, 500);
+        frame.setSize(530, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();
         panel.setLayout(null);
 
         frame.add(panel);
-        panel.setBackground(new Color(255, 211, 242));
+        panel.setBackground(new Color(255, 198, 248));
+      //  panel.setBackground(new Color(255, 211, 242));
 
         panel.add(welcome);
         panel.add(moon);
@@ -220,9 +221,10 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     private JLabel getMoonGif() throws MalformedURLException {
 
-        URL moonUrl = new URL("https://media1.giphy.com/media/9ukPOCS9EOEta/giphy.gif?cid=ecf05e47y8fyxri3mvpgrqhtcdgwa9pm4dhleghq3027ccje&rid=giphy.gif&ct=s");
+        URL moonUrl = new URL("http://www.animatedgif.net/plants/flowerline2_e0.gif");
         Icon moonIcon = new ImageIcon(moonUrl);
         JLabel moon = new JLabel(moonIcon);
+        moon.setBounds(70,70,400,400);
         return moon;
     }
 
