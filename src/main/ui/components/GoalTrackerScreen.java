@@ -56,10 +56,15 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     JScrollPane listScrollPane = getScrollList();
 
+    public GoalTracker getGoalTracker() {
+        return goalTracker;
+    }
+
     GoalTracker goalTracker = new GoalTracker("Default User");
 
 
     public GoalTrackerScreen() throws MalformedURLException {
+
 
         jsonReader = new JsonReader(JSON_LOC);
         // loadGoalTracker();
@@ -176,12 +181,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         Goal goal = new Goal("test", 20, 100);
 
         if ("addGoal".equals(e.getActionCommand())) {
-            Goal g;
-            g = new Goal("Enter Name", 0, 100);
-            new GoalDetailScreen(g);
-
-            goalTracker.addGoal(g);
-            listModel.addElement(g.getName());
+            doAddGoal();
 
         } else if ("inspireButton".equals(e.getActionCommand())) {
             try {
@@ -195,6 +195,14 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             saveGoalTrackerScreen();
         }
 
+    }
+
+    private void doAddGoal() {
+        Goal g = new Goal("Enter", 0, 100);
+        new GoalDetailScreen(g);
+
+        goalTracker.addGoal(g);
+        listModel.addElement(g.getName());
     }
 
     private ActionListener saveGoalTrackerScreen() {

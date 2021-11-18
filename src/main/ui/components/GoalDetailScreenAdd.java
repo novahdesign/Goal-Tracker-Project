@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GoalDetailScreen implements ActionListener {
+public class GoalDetailScreenAdd implements ActionListener {
 
     private Goal goal;
     private GoalTracker goalTracker;
@@ -58,7 +58,7 @@ public class GoalDetailScreen implements ActionListener {
     private JProgressBar progressBar;
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    public GoalDetailScreen(Goal goal) {
+    public GoalDetailScreenAdd(Goal goal) {
 
         this.goal = goal;
 
@@ -190,16 +190,9 @@ public class GoalDetailScreen implements ActionListener {
         System.out.println(goal.getTargetHours());
         System.out.println(goal.getProgress());
 
-//        goalTracker.addGoal(newGoal);
-
-        // goalTracker.addGoal(goal);
-
-
         frame.dispose();
 
     }
-
-    public Goal getMadeNewGoal() {
-        return getNewGoal();
-    }
 }
+
+

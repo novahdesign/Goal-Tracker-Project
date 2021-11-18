@@ -3,28 +3,13 @@
     "goals": [
         {
             "target hours": 100,
-            "name": "Enter Name",
-            "current hours": "0"
+            "name": "test",
+            "current hours": "20"
         },
         {
             "target hours": 100,
-            "name": "Enter Name",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "Enter Name",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "Enter Name",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "Enter Name",
-            "current hours": "0"
+            "name": "test",
+            "current hours": "20"
         }
     ]
 }
