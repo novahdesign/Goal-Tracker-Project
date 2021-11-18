@@ -3,17 +3,22 @@
     "goals": [
         {
             "target hours": 100,
-            "name": "Yerba Ambassador",
+            "name": " 111111",
+            "current hours": "11"
+        },
+        {
+            "target hours": 100,
+            "name": "phase 222",
             "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "sleep",
+            "current hours": "222"
         },
         {
             "target hours": 100,
             "name": "Enter",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "Sleep ",
             "current hours": "0"
         }
     ]

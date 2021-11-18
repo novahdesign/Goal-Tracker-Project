@@ -198,6 +198,8 @@ public class GoalDetailScreen implements ActionListener {
         this.goal.setTargetHours(Integer.parseInt(targetText.getText()));
         this.goal.setCurrentHours(Integer.parseInt(currentText.getText()));
 
+        //goalTracker.addGoal(newGoal);
+
         System.out.println(goal.getName());
         System.out.println(goal.getCurrentHours());
         System.out.println(goal.getTargetHours());

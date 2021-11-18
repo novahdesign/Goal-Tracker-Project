@@ -133,14 +133,14 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
                     //Selection, enable the fire button.
                     int selectedIndex = testList.getSelectedIndex();
                     selectedGoal = goalTracker.getGoalList().get(selectedIndex);
-                    new GoalDetailScreen(selectedGoal);
+                  //  new GoalDetailScreen(selectedGoal);
+                    new GoalDetailScreenEditView(selectedGoal);
 
                     testList.getSelectedValue();
                     System.out.println(testList.getSelectedValue());
 
 
-
-                      //      fireButton.setEnabled(true);
+                    //      fireButton.setEnabled(true);
                 }
             }
 //            //  JTextArea output;
@@ -252,7 +252,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     }
 
     private void doEditViewGoal() {
-   //     new GoalDetailScreenEditView(goal);
+
     }
 
     private void loadGoalTracker() {
@@ -606,14 +606,17 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         }
 
 
-
         @Override
         public void actionPerformed(ActionEvent e) {
+          //  listModel.removeElement(this.goal.getName());
+     //       goalTracker.removeGoal(this.goal);
+
 
             Goal newGoal = new Goal(nameText.getText(), Integer.parseInt(currentText.getText()),
                     Integer.parseInt(targetText.getText()));
 
             this.goal = newGoal;
+
 
             this.goal.setName(nameText.getText());
             this.goal.setTargetHours(Integer.parseInt(targetText.getText()));
@@ -624,9 +627,9 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             System.out.println(goal.getTargetHours());
             System.out.println(goal.getProgress());
 
-
-            goalTracker.updateGoal(newGoal);
-            listModel.addElement(newGoal.getName());
+            goalTracker.getGoalList().set(testList.getSelectedIndex(), newGoal);
+            //goalTracker.addGoal(newGoal);
+            listModel.set(testList.getSelectedIndex(), newGoal.getName());
             //   listModel.addElement(getProgressBar());
 
 
