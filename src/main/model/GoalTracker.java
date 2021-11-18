@@ -83,9 +83,5 @@ public class GoalTracker implements Writable {
     }
 
 
-    public void updateGoal(Goal newGoal) {
-        goalList.set(newGoal.getId(), newGoal);
-
-    }
 }
 

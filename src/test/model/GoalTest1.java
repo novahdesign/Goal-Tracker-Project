@@ -53,5 +53,29 @@ class GoalTest {
 
     }
 
+    @Test
+    void testSetName() {
+        testGoal.setName("NewName");
+        assertTrue(testGoal.getName() == "NewName");
+    }
+
+    @Test
+    void testSetCurrentHours() {
+        testGoal.setCurrentHours(24);
+        assertEquals(24, testGoal.getCurrentHours());
+    }
+
+    @Test
+    void testSetTargetHours() {
+        testGoal.setTargetHours(50);
+        assertEquals(50, testGoal.getTargetHours());
+    }
+
+    @Test
+    void testGetTargetHours() {
+        testGoal.setTargetHours(5);
+        assertEquals(5, testGoal.getTargetHours());
+    }
+
 
 }

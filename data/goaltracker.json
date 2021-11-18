@@ -1,8 +1,25 @@
 {
     "user": "Default User",
-    "goals": [{
-        "target hours": 100,
-        "name": "Finish Phase 3",
-        "current hours": "70"
-    }]
+    "goals": [
+        {
+            "target hours": 100,
+            "name": "Finish Phase 3",
+            "current hours": "89"
+        },
+        {
+            "target hours": 100,
+            "name": "Fix bugs",
+            "current hours": "50"
+        },
+        {
+            "target hours": 100,
+            "name": "Eat Lunch",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Go to Art Showwww",
+            "current hours": "0"
+        }
+    ]
 }
