@@ -145,13 +145,14 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         inspireButton.setBounds(40, 120, 165, 25);
         inspireButton.setActionCommand("inspireButton");
         inspireButton.addActionListener(this);
-
         return inspireButton;
     }
 
     private JButton getLoadButton() {
         JButton loadButton = new JButton("Load");
         loadButton.setBounds(40, 90, 165, 25);
+        loadButton.setActionCommand("loadButton");
+        loadButton.addActionListener(this);
         return loadButton;
     }
 
@@ -193,8 +194,24 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             new GoalDetailScreen(goal);
         } else if ("saveButton".equals(e.getActionCommand())) {
             saveGoalTrackerScreen();
+        } else if ("loadButton".equals(e.getActionCommand())) {
+            loadGoalTracker();
         }
+    }
 
+    private void loadGoalTracker() {
+        try {
+            goalTracker = jsonReader.read();
+
+            for (Goal goal: goalTracker.getGoalList()) {
+                listModel.addElement(goal.getName());
+            }
+
+        } catch (IOException e) {
+            goalTracker = new GoalTracker();
+            System.out.println("This is the first time using Goal Tracker!");
+            goalTracker.setUser("Default User");
+        }
     }
 
     private void doAddGoal() {
