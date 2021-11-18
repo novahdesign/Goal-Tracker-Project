@@ -125,7 +125,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     }
 
     private JButton getEditGoalButton() {
-        JButton editGoalButton = new JButton("Edit Goal");
+        JButton editGoalButton = new JButton("Edit/View Goal");
         editGoalButton.setBounds(40, 180, 165, 25);
         editGoalButton.setActionCommand("editGoalButton");
         editGoalButton.addActionListener(this);
@@ -202,7 +202,6 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     private void loadGoalTracker() {
         try {
             goalTracker = jsonReader.read();
-
             for (Goal goal: goalTracker.getGoalList()) {
                 listModel.addElement(goal.getName());
             }
