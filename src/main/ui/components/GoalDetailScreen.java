@@ -203,6 +203,8 @@ public class GoalDetailScreen implements ActionListener {
         System.out.println(goal.getTargetHours());
         System.out.println(goal.getProgress());
 
+
+
 //        goalTracker.addGoal(newGoal);
 
         // goalTracker.addGoal(goal);

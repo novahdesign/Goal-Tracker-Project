@@ -82,5 +82,10 @@ public class GoalTracker implements Writable {
         return jsonArray;
     }
 
+
+    public void updateGoal(Goal newGoal) {
+        goalList.set(newGoal.getId(), newGoal);
+
+    }
 }
 
