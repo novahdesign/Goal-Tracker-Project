@@ -7,6 +7,8 @@ import persistence.Writable;
 public class Goal implements Writable {
     private static int nextGoalID = 1;
     private int id;
+    public static final int defaultTargetHours = 100;
+
 
     public void setName(String name) {
         this.name = name;
@@ -34,7 +36,7 @@ public class Goal implements Writable {
         name = goalName;
         this.currentHours = currentHours;
         if (targetHours == 0) {
-            targetHours = Constants.defaultTargetHours;
+            targetHours = defaultTargetHours;
             System.out.println("Target hours set to default 100 hours.");
         } else {
             this.targetHours = targetHours;
