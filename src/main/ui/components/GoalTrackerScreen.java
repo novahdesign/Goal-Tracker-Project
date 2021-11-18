@@ -407,6 +407,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             progressBar.setBounds(100, 110, 165, 25);
             progressBar.setValue((int) goal.getProgress());
             progressBar.setStringPainted(true);
+
             return progressBar;
         }
 
@@ -581,6 +582,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         public JProgressBar createProgressBar(Goal goal) {
             JProgressBar progressBar = new JProgressBar(SwingConstants.HORIZONTAL);
             progressBar.setBounds(100, 110, 165, 25);
+            progressBar.setForeground(new Color(183, 92, 255));
             progressBar.setValue((int) goal.getProgress());
             progressBar.setStringPainted(true);
             return progressBar;
