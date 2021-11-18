@@ -10,6 +10,7 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -112,7 +113,59 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         JScrollPane scrollList = new JScrollPane(testList);
         scrollList.setBounds(215, 90, 240, 200);
 
+        ListSelectionModel listSelectionModel;
+        listSelectionModel = testList.getSelectionModel();
+        listSelectionModel.addListSelectionListener(
+                new SharedListSelectionHandler());
+
         return scrollList;
+    }
+
+    private class SharedListSelectionHandler implements ListSelectionListener {
+        public void valueChanged(ListSelectionEvent e) {
+            Goal selectedGoal;
+
+            if (e.getValueIsAdjusting() == false) {
+
+                if (testList.getSelectedIndex() == -1) {
+                    System.out.println("select something!");
+                } else {
+                    //Selection, enable the fire button.
+                    int selectedIndex = testList.getSelectedIndex();
+                    selectedGoal = goalTracker.getGoalList().get(selectedIndex);
+                    new GoalDetailScreen(selectedGoal);
+
+                    testList.getSelectedValue();
+                    System.out.println(testList.getSelectedValue());
+
+
+
+                      //      fireButton.setEnabled(true);
+                }
+            }
+//            //  JTextArea output;
+//            ListSelectionModel lsm = (ListSelectionModel) e.getSource();
+//            int firstIndex = e.get();
+//
+//            System.out.println(listModel.get(firstIndex));
+
+//            int lastIndex = e.getLastIndex();
+//            boolean isAdjusting = e.getValueIsAdjusting();
+//            System.out.println("Event for indexes "
+//                    + firstIndex + " - " + lastIndex
+//                    + "; isAdjusting is " + isAdjusting
+//                    + "; selected indexes:");
+
+//            if (lsm.isSelectionEmpty()) {
+//                System.out.println("<none>");
+//            } else {
+//                // Find out which indexes are selected.
+////                int minIndex = lsm.getMinSelectionIndex();
+////                int maxIndex = lsm.getMaxSelectionIndex();
+////                for (int i = minIndex; i <= maxIndex; i++) {
+////                    if (lsm.isSelectedIndex(i)) {
+//                System.out.println((" " + firstIndex));
+        }
     }
 
 
@@ -179,11 +232,10 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
         //    GoalTracker goalTracker = new GoalTracker();
 
-        Goal goal = new Goal("test", 20, 100);
+        //   Goal goal = new Goal("test", 20, 100);
 
         if ("addGoal".equals(e.getActionCommand())) {
             doAddGoal();
-
         } else if ("inspireButton".equals(e.getActionCommand())) {
             try {
                 new InspirationScreen();
@@ -191,7 +243,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
                 ex.printStackTrace();
             }
         } else if ("editGoalButton".equals(e.getActionCommand())) {
-            new GoalDetailScreen(goal);
+            doEditViewGoal();
         } else if ("saveButton".equals(e.getActionCommand())) {
             saveGoalTrackerScreen();
         } else if ("loadButton".equals(e.getActionCommand())) {
@@ -199,10 +251,14 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         }
     }
 
+    private void doEditViewGoal() {
+
+    }
+
     private void loadGoalTracker() {
         try {
             goalTracker = jsonReader.read();
-            for (Goal goal: goalTracker.getGoalList()) {
+            for (Goal goal : goalTracker.getGoalList()) {
                 listModel.addElement(goal.getName());
             }
 
@@ -389,7 +445,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
             goalTracker.addGoal(newGoal);
             listModel.addElement(newGoal.getName());
-         //   listModel.addElement(getProgressBar());
+            //   listModel.addElement(getProgressBar());
 
 
             frame.dispose();
