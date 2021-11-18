@@ -223,6 +223,11 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         private JTextField nameText;
         private JTextField targetText;
         private JTextField currentText;
+
+        public JProgressBar getProgressBar() {
+            return progressBar;
+        }
+
         private JProgressBar progressBar;
 
         public GoalDetailScreenAdd(Goal goal) {
@@ -368,10 +373,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
             goalTracker.addGoal(newGoal);
             listModel.addElement(newGoal.getName());
-
-//        goalTracker.addGoal(newGoal);
-
-            // goalTracker.addGoal(goal);
+         //   listModel.addElement(getProgressBar());
 
 
             frame.dispose();
