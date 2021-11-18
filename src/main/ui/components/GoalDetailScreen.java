@@ -57,20 +57,12 @@ public class GoalDetailScreen implements ActionListener {
 
     private JProgressBar progressBar;
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+
     public GoalDetailScreen(Goal goal) {
 
         this.goal = goal;
 
-        JPanel panel = new JPanel();
-        frame = new JFrame();
-        frame.setSize(300, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(panel);
-
-        panel.setLayout(null);
-        Color background = new Color(255, 123, 211);
-        panel.setBackground(background);
+        JPanel panel = getPanel();
 
         panel.add(nameLabel());
 
@@ -99,6 +91,19 @@ public class GoalDetailScreen implements ActionListener {
 
         frame.setVisible(true);
 
+    }
+
+    private JPanel getPanel() {
+        JPanel panel = new JPanel();
+        frame = new JFrame();
+        frame.setSize(300, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(panel);
+
+        panel.setLayout(null);
+        Color background = new Color(255, 123, 211);
+        panel.setBackground(background);
+        return panel;
     }
 
     private JButton makeSaveButton(JPanel panel) {
@@ -164,6 +169,14 @@ public class GoalDetailScreen implements ActionListener {
         return nameLabel;
     }
 
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
+    }
+
+    public GoalTracker getGoalTracker() {
+        return goalTracker;
+    }
 
     public Goal getNewGoal() {
         Goal newGoal = new Goal(nameText.getText(), Integer.parseInt(currentText.getText()),
