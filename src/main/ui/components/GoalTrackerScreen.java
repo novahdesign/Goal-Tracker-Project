@@ -22,10 +22,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+// Goal Tracker Screen that is the opening GUI window upon opening the application
 public class GoalTrackerScreen extends DefaultListModel implements ActionListener, Writable {
 
     Goal goal;
-
     private static final String JSON_LOC = "./data/goaltracker.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -63,12 +63,10 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     GoalTracker goalTracker = new GoalTracker("Default User");
 
-
+    // EFFECTS: creates the Goal Tracker Screen window
     public GoalTrackerScreen() throws MalformedURLException {
 
-
         jsonReader = new JsonReader(JSON_LOC);
-        // loadGoalTracker();
         jsonWriter = new JsonWriter(JSON_LOC);
 
         JFrame frame = new JFrame();
@@ -80,7 +78,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
         frame.add(panel);
         panel.setBackground(new Color(255, 198, 248));
-      //  panel.setBackground(new Color(255, 211, 242));
+        //  panel.setBackground(new Color(255, 211, 242));
 
         panel.add(welcome);
         panel.add(moon);
@@ -96,17 +94,10 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     }
 
+    // EFFECTS: initializes the Scroll List pane to display list of goals
     private JScrollPane getScrollList() {
 
-        Goal testGoal = new Goal("Finish Phase 3", 10, 100);
-
         listModel = new DefaultListModel();
-//
-//        listModel.addElement(testGoal.getName());
-//        listModel.addElement(testGoal.getProgress());
-//
-//        listModel.addElement("John Smith");
-//        listModel.addElement("Kathy Green");
 
         testList = new JList(listModel);
         testList.setVisibleRowCount(15);
@@ -122,6 +113,8 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         return scrollList;
     }
 
+    // MODIFIES: this
+    // EFFECTS: gets the selected index value
     private class SharedListSelectionHandler implements ListSelectionListener {
         public void valueChanged(ListSelectionEvent e) {
             Goal selectedGoal;
@@ -131,45 +124,21 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
                 if (testList.getSelectedIndex() == -1) {
                     System.out.println("select something!");
                 } else {
-                    //Selection, enable the fire button.
+                    //Selection, get the selected Index
                     int selectedIndex = testList.getSelectedIndex();
                     selectedGoal = goalTracker.getGoalList().get(selectedIndex);
-                  //  new GoalDetailScreen(selectedGoal);
                     new GoalDetailScreenEditView(selectedGoal);
 
                     testList.getSelectedValue();
                     System.out.println(testList.getSelectedValue());
 
-
-                    //      fireButton.setEnabled(true);
                 }
             }
-//            //  JTextArea output;
-//            ListSelectionModel lsm = (ListSelectionModel) e.getSource();
-//            int firstIndex = e.get();
-//
-//            System.out.println(listModel.get(firstIndex));
 
-//            int lastIndex = e.getLastIndex();
-//            boolean isAdjusting = e.getValueIsAdjusting();
-//            System.out.println("Event for indexes "
-//                    + firstIndex + " - " + lastIndex
-//                    + "; isAdjusting is " + isAdjusting
-//                    + "; selected indexes:");
-
-//            if (lsm.isSelectionEmpty()) {
-//                System.out.println("<none>");
-//            } else {
-//                // Find out which indexes are selected.
-////                int minIndex = lsm.getMinSelectionIndex();
-////                int maxIndex = lsm.getMaxSelectionIndex();
-////                for (int i = minIndex; i <= maxIndex; i++) {
-////                    if (lsm.isSelectedIndex(i)) {
-//                System.out.println((" " + firstIndex));
         }
     }
 
-
+    // EFFECTS: creates the save button
     private JButton getSaveButton() {
         JButton saveButton = new JButton("Save");
         saveButton.setBounds(40, 210, 165, 25);
@@ -178,6 +147,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         return saveButton;
     }
 
+    // EFFECTS: creates the edit goal button
     private JButton getEditGoalButton() {
         JButton editGoalButton = new JButton("Edit/View Goal");
         editGoalButton.setBounds(40, 180, 165, 25);
@@ -186,6 +156,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         return editGoalButton;
     }
 
+    // EFFECTS: creates the add goal button
     private JButton getAddGoalButton() {
         JButton addGoalButton = new JButton("Add Goal");
         addGoalButton.setBounds(40, 150, 165, 25);
@@ -194,6 +165,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         return addGoalButton;
     }
 
+    // EFFECTS: creates the inspiration button
     private JButton getInspireButton() {
         JButton inspireButton = new JButton("Inspiration");
         inspireButton.setBounds(40, 120, 165, 25);
@@ -202,6 +174,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         return inspireButton;
     }
 
+    // EFFECTS: creates the load button
     private JButton getLoadButton() {
         JButton loadButton = new JButton("Load");
         loadButton.setBounds(40, 90, 165, 25);
@@ -210,31 +183,29 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         return loadButton;
     }
 
-    private JLabel getWelcomeGif() throws MalformedURLException {
+    // EFFECTS: gets the welcome gif
+    private JLabel getWelcomeGif() {
 
-        URL url = new URL("http://www.animatedgif.net/welcome/weltrain_e0.gif");
-        Icon icon = new ImageIcon(url);
+        //   URL url = new URL("http://www.animatedgif.net/welcome/weltrain_e0.gif");
+        Icon icon = new ImageIcon("data/weltrain_e0.gif");
         JLabel welcomeGif = new JLabel(icon);
         welcomeGif.setBounds(5, 5, 490, 80);
         return welcomeGif;
     }
 
-    private JLabel getMoonGif() throws MalformedURLException {
+    // EFFECTS: gets the flowers gif
+    private JLabel getMoonGif() {
 
-        URL moonUrl = new URL("http://www.animatedgif.net/plants/flowerline2_e0.gif");
-        Icon moonIcon = new ImageIcon(moonUrl);
+        //  URL moonUrl = new URL("http://www.animatedgif.net/plants/flowerline2_e0.gif");
+        Icon moonIcon = new ImageIcon("data/flowerline2_e0.gif");
         JLabel moon = new JLabel(moonIcon);
-        moon.setBounds(70,70,400,400);
+        moon.setBounds(70, 70, 400, 400);
         return moon;
     }
 
-
+    // EFFECTS: handles the different actions for each button when pressed
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        //    GoalTracker goalTracker = new GoalTracker();
-
-        //   Goal goal = new Goal("test", 20, 100);
 
         if ("addGoal".equals(e.getActionCommand())) {
             doAddGoal();
@@ -253,10 +224,12 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         }
     }
 
+    // EFFECTS: do edit and view goal upon selection
     private void doEditViewGoal() {
 
     }
 
+    // EFFECTS: loads the goal tracker on file
     private void loadGoalTracker() {
         try {
             goalTracker = jsonReader.read();
@@ -612,8 +585,8 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
         @Override
         public void actionPerformed(ActionEvent e) {
-          //  listModel.removeElement(this.goal.getName());
-     //       goalTracker.removeGoal(this.goal);
+            //  listModel.removeElement(this.goal.getName());
+            //       goalTracker.removeGoal(this.goal);
 
 
             Goal newGoal = new Goal(nameText.getText(), Integer.parseInt(currentText.getText()),

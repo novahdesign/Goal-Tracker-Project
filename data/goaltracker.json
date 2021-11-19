@@ -9,12 +9,12 @@
         {
             "target hours": 100,
             "name": "Fix bugs 2",
-            "current hours": "50"
+            "current hours": "70"
         },
         {
             "target hours": 100,
-            "name": "Eat Lunch 1",
-            "current hours": "0"
+            "name": "Fix bugs 2",
+            "current hours": "50"
         },
         {
             "target hours": 100,
@@ -39,6 +39,26 @@
         {
             "target hours": 100,
             "name": "Love",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "FInish Econ",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "create Lab ",
+            "current hours": "33333"
+        },
+        {
+            "target hours": 100,
+            "name": "oooo",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter",
             "current hours": "0"
         }
     ]
