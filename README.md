@@ -43,4 +43,13 @@ persistence, graphical user interface, and design.
 ### Phase 2
 - As a user, I want to be able to save my goal tracker with the progress so far on each goal on quitting the application. 
 - As a user, I want to load my goal tracker on file on opening the application by typing view goals.
-### Phase 2
+### Phase 3
+GUI User Stories:
+- As a user, I want to be able to add multiple goals to my goal tracker using an "Add Goal" button in my GUI.
+- As a user, I want to be able to view all the goals I have added to my goal tracker in a list in a panel.
+- As a user, the first event related to my goals and goal tracker is: Viewing the goal details, including name, current hours, target hours, and progress bar in a separate screen upon selecting the goal in the panel.
+- As a user, a second event related to my goals and goal tracker is: Editing the goal, such as changing the name, adding time, and changing the target hours. This is also handled upon selecting the goal in the panel, changing the desired details, and pressing the "Save and Back" button.
+- As a user, I want to be able to load the goal tracker on file by pressing the "Load" button in my GUI.
+- As a user, I want to be able to save my goal tracker by pressing the "Save" button in my GUI.
+- As a user, I want to be greeted with a Welcome message and animated visually aesthetic components upon running my goal tracker and viewing the GUI.
+- As a user, I want to be able to generate a new screen that displays an inspirational visual image upon pressing the "Inspiration" button in my GUI.
