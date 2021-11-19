@@ -9,7 +9,7 @@
         {
             "target hours": 100,
             "name": "Fix bugs 2",
-            "current hours": "70"
+            "current hours": "76"
         },
         {
             "target hours": 100,
@@ -60,6 +60,31 @@
             "target hours": 100,
             "name": "Enter",
             "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "testing!",
+            "current hours": "20"
+        },
+        {
+            "target hours": 100,
+            "name": "teststst",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter",
+            "current hours": "222"
+        },
+        {
+            "target hours": 100,
+            "name": "aaa",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "addd",
+            "current hours": "70"
         }
     ]
 }

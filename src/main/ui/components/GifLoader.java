@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+// Represents GifLoader
 public class GifLoader {
 
     public GifLoader() throws MalformedURLException {
@@ -24,6 +25,7 @@ public class GifLoader {
 
     }
 
+    // EFFECTS: creates the gifloader
     public static void main(String[] args) throws MalformedURLException {
 
         new GifLoader();

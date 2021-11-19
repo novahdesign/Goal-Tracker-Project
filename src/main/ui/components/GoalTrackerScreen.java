@@ -247,10 +247,8 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
     // EFFECTS: initializes the GoalDetailScreenAdd window with Goal g
     private void doAddGoal() {
         Goal g = new Goal("Enter", 0, 100);
-//        new GoalDetailScreen(g);
         new GoalDetailScreenAdd(g);
-//        goalTracker.addGoal(g);
-//        listModel.addElement(g.getName());
+
     }
 
     // MODIFIES: this
@@ -399,6 +397,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
             return progressBar;
         }
+
         // EFFECTS: creates name label
         private JLabel nameLabel() {
             JLabel nameLabel = new JLabel("Goal Name");
@@ -423,6 +422,8 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             return newGoal;
         }
 
+        // MODIFIES: this, goalTracker
+        // EFFECTS: sets this goal to the new goal and adds new goal to the goal tracker
         @Override
         public void actionPerformed(ActionEvent e) {
 
@@ -450,6 +451,8 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     }
 
+
+    // Represents the Goal Detail Screen for editing and viewing goal
     private class GoalDetailScreenEditView implements ActionListener {
 
         private Goal goal;
@@ -465,6 +468,8 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
         private JProgressBar progressBar;
 
+
+        // EFFECTS: creates the GoalDetailScreen for editing and viewing the goal
         public GoalDetailScreenEditView(Goal goal) {
 
             JPanel panel = getPanel();
@@ -498,6 +503,8 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
         }
 
+
+        // EFFECTS: creates the JPanel
         private JPanel getPanel() {
             JPanel panel = new JPanel();
             frame = new JFrame();
@@ -511,6 +518,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             return panel;
         }
 
+        // EFFECTS: creates save button
         private JButton makeSaveButton(JPanel panel) {
             JButton saveButton = new JButton("Save and Back");
             saveButton.setBounds(50, 140, 165, 25);
@@ -518,12 +526,14 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             return saveButton;
         }
 
+        // EFFECTS: creates progress label
         private void makeProgressLabel(JPanel panel) {
             JLabel progressLabel = new JLabel("Progress");
             progressLabel.setBounds(10, 110, 80, 25);
             panel.add(progressLabel);
         }
 
+        // EFFECTS: creates current hours text field
         private void makeCurrentHoursText(Goal goal, JPanel panel) {
             currentText = new JTextField(20);
             currentText.setBounds(100, 80, 165, 25);
@@ -531,24 +541,28 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             panel.add(currentText);
         }
 
+        // EFFECTS: creates current hours label
         private JLabel makeCurrentLabel() {
             JLabel currentLabel = new JLabel("Current Hours");
             currentLabel.setBounds(10, 80, 80, 25);
             return currentLabel;
         }
 
+        // EFFECTS: creates target hours label
         private JLabel makeJLabel() {
             JLabel targetLabel = new JLabel("Target Hours");
             targetLabel.setBounds(10, 50, 80, 25);
             return targetLabel;
         }
 
+        // EFFECTS: creates target hours text field
         private void makeTargetText(Goal goal) {
             targetText = new JTextField(20);
             targetText.setBounds(100, 50, 165, 25);
             targetText.setText(String.valueOf(goal.getTargetHours()));
         }
 
+        // EFFECTS: creates name text field
         private void makeNameText(Goal goal) {
             nameText = new JTextField(20);
             nameText.setBounds(100, 20, 165, 25);
@@ -559,6 +573,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             return goal;
         }
 
+        // EFFECTS: creates progress bar
         public JProgressBar createProgressBar(Goal goal) {
             JProgressBar progressBar = new JProgressBar(SwingConstants.HORIZONTAL);
             progressBar.setBounds(100, 110, 165, 25);
@@ -568,6 +583,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             return progressBar;
         }
 
+        // EFFECTS: creates name label
         private JLabel nameLabel() {
             JLabel nameLabel = new JLabel("Goal Name");
             nameLabel.setBounds(10, 20, 80, 25);
@@ -583,18 +599,12 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             return goalTracker;
         }
 
-        public Goal getNewGoal() {
-            Goal newGoal = new Goal(nameText.getText(), Integer.parseInt(currentText.getText()),
-                    Integer.parseInt(targetText.getText()));
-            return newGoal;
-        }
 
 
+        // MODIFIES: this
+        // EFFECTS: gets index from selection and sets the new goal to details inputted by user
         @Override
         public void actionPerformed(ActionEvent e) {
-            //  listModel.removeElement(this.goal.getName());
-            //       goalTracker.removeGoal(this.goal);
-
 
             Goal newGoal = new Goal(nameText.getText(), Integer.parseInt(currentText.getText()),
                     Integer.parseInt(targetText.getText()));
@@ -612,10 +622,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             System.out.println(goal.getProgress());
 
             goalTracker.getGoalList().set(testList.getSelectedIndex(), newGoal);
-            //goalTracker.addGoal(newGoal);
             listModel.set(testList.getSelectedIndex(), newGoal.getName());
-            //   listModel.addElement(getProgressBar());
-
 
             frame.dispose();
 
@@ -625,54 +632,6 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
 
 }
-
-
-//
-//            Goal emptyGoal = new Goal("", 0, 100);
-//
-//            new GoalDetailScreen(emptyGoal, goalTracker);
-//            goalTracker.getGoalList().add(goal);
-//
-//            return new GoalDetailScreen(goal, goalTracker);
-//
-//        JButton loadButton = new JButton("Load");
-//        loadButton.setBounds(20, 400, 165, 25);
-//        panel.add(loadButton);
-//
-//        JButton inspireButton = new JButton("Inspiration");
-//        inspireButton.setBounds(60, 90, 165, 25);
-//        panel.add(inspireButton);
-//
-//        inspireButton.addActionListener(this);
-//
-//        JButton addGoal = new JButton("Add Goal");
-//        addGoal.setBounds(40, 90, 165, 25);
-//        panel.add(addGoal);
-//
-//        addGoal.addActionListener(this);
-//
-//        JButton addTimeButton = new JButton("Add Time");
-//        addTimeButton.setBounds(80, 90, 165, 25);
-//        panel.add(addTimeButton);
-//
-//        JButton saveButton = new JButton("Save");
-//        saveButton.setBounds(100, 90, 165, 25);
-//        panel.add(saveButton);
-//
-//        frame.setVisible(true);
-//
-//    public static void main(String[] args) throws MalformedURLException {
-//        new GoalTrackerScreen();
-//    }
-
-//    public void addGoalButton() {
-//        JButton addGoal = new JButton("Add Goal");
-//        addGoal.setBounds(40, 90, 165, 25);
-//        panel.add(addGoal);
-//
-//        addGoal.addActionListener(this);
-//    }
-
 
 
 
