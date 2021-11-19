@@ -19,12 +19,27 @@
         {
             "target hours": 100,
             "name": "Go to Art Showwww",
-            "current hours": "0"
+            "current hours": "50"
         },
         {
             "target hours": 100,
             "name": "Hi",
             "current hours": "20"
+        },
+        {
+            "target hours": 100,
+            "name": "Live",
+            "current hours": "20"
+        },
+        {
+            "target hours": 100,
+            "name": "Laugh",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Love",
+            "current hours": "0"
         }
     ]
 }
