@@ -110,6 +110,11 @@
             "target hours": 100,
             "name": "FINISH LOREAL SHIT",
             "current hours": "33"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter",
+            "current hours": "0"
         }
     ]
 }
