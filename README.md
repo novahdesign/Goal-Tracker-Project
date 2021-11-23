@@ -47,6 +47,7 @@ persistence, graphical user interface, and design.
 GUI User Stories:
 - As a user, I want to be able to add multiple goals to my goal tracker using an "Add Goal" button in my GUI.
 - As a user, I want to be able to view all the goals I have added to my goal tracker in a list in a panel.
+
 - As a user, the first event related to my goals and goal tracker is: Viewing the goal details, including name, current hours, target hours, and progress bar in a separate screen upon selecting the goal in the panel.
 - As a user, a second event related to my goals and goal tracker is: Editing the goal, such as changing the name, adding time, and changing the target hours. This is also handled upon selecting the goal in the panel, changing the desired details, and pressing the "Save and Back" button.
 - As a user, I want to be able to load the goal tracker on file by pressing the "Load" button in my GUI.

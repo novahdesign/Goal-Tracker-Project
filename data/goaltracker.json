@@ -4,7 +4,7 @@
         {
             "target hours": 100,
             "name": "Finish Phase 3",
-            "current hours": "89"
+            "current hours": "100"
         },
         {
             "target hours": 100,
@@ -13,7 +13,7 @@
         },
         {
             "target hours": 100,
-            "name": "Fix bugs 2",
+            "name": "confirm shoot ",
             "current hours": "50"
         },
         {
@@ -23,23 +23,23 @@
         },
         {
             "target hours": 100,
-            "name": "Hi",
+            "name": "Write a thank you letter",
             "current hours": "20"
         },
         {
             "target hours": 100,
             "name": "Live",
-            "current hours": "20"
+            "current hours": "19"
         },
         {
             "target hours": 100,
             "name": "Laugh",
-            "current hours": "0"
+            "current hours": "50"
         },
         {
             "target hours": 100,
             "name": "Love",
-            "current hours": "0"
+            "current hours": "100"
         },
         {
             "target hours": 100,
@@ -85,6 +85,31 @@
             "target hours": 100,
             "name": "addd",
             "current hours": "70"
+        },
+        {
+            "target hours": 100,
+            "name": "m",
+            "current hours": "299"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "FINISH LOREAL SHIT",
+            "current hours": "33"
         }
     ]
 }
