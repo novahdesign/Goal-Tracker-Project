@@ -21,7 +21,7 @@ public class EventLog implements Iterable<Event> {
      * Prevent external construction.
      * (Singleton Design Pattern).
      */
-    private EventLog() {
+    public EventLog() {
         events = new ArrayList<Event>();
     }
 

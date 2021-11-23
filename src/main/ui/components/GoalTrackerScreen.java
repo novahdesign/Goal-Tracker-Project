@@ -1,5 +1,6 @@
 package ui.components;
 
+import model.Event;
 import model.EventLog;
 import ui.components.GoalDetailScreen;
 import model.Goal;
@@ -33,6 +34,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
     private List<Goal> goalList = new ArrayList<>();
     private String user = null;
+    //  private EventLog el;
 
     public void setGoalList(List<Goal> goalList) {
         this.goalList = goalList;
@@ -220,6 +222,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             doEditViewGoal();
         } else if ("saveButton".equals(e.getActionCommand())) {
             saveGoalTrackerScreen();
+            doPrintEventLog(EventLog.getInstance());
         } else if ("loadButton".equals(e.getActionCommand())) {
             loadGoalTracker();
         }
@@ -258,18 +261,27 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         try {
             jsonWriter.write(goalTracker);
             System.out.println("Saved " + goalTracker.getUser() + " to " + JSON_LOC);
-            doPrintEventLog();
+;
+//            EventLog el = new EventLog();
+//            doPrintEventLog(EventLog el);
+
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_LOC);
         }
         return goalTrackerScreen;
     }
 
-    private void doPrintEventLog() {
-        LogPrinter lp = null;
-        lp.printLog(EventLog.getInstance());
-    }
+    private void doPrintEventLog(EventLog el) {
+        for (Event next: el) {
+            System.out.println("\n\n" + next.toString());
+        }
 
+//        for (Event next : el) {
+//            fw.write(next.toString());
+//            fw.write("\n\n");
+//        LogPrinter lp = null;
+//        lp.printLog(EventLog.getInstance());
+    }
 
 
     // Represents class for Goal Detail Screen to add a goal
@@ -607,7 +619,6 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         public GoalTracker getGoalTracker() {
             return goalTracker;
         }
-
 
 
         // MODIFIES: this
