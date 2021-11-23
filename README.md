@@ -54,3 +54,24 @@ GUI User Stories:
 - As a user, I want to be able to save my goal tracker by pressing the "Save" button in my GUI.
 - As a user, I want to be greeted with a Welcome message and animated visually aesthetic components upon running my goal tracker and viewing the GUI.
 - As a user, I want to be able to generate a new screen that displays an inspirational visual image upon pressing the "Inspiration" button in my GUI.
+
+### Phase 4
+
+Example of Event Logging:
+
+Phase 4: Task 2
+
+Tue Nov 23 12:03:18 PST 2021
+Added a goal:Goal 1 example
+
+
+Tue Nov 23 12:03:26 PST 2021
+Added a goal:Goal 2 wow!
+
+
+Tue Nov 23 12:03:37 PST 2021
+Added a goal:Go to Office Hours
+
+
+Tue Nov 23 12:03:43 PST 2021
+Added a goal:Complete Phase 4
