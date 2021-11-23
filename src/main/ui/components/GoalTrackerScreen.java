@@ -1,5 +1,6 @@
 package ui.components;
 
+import model.EventLog;
 import ui.components.GoalDetailScreen;
 import model.Goal;
 import model.GoalTracker;
@@ -257,11 +258,19 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         try {
             jsonWriter.write(goalTracker);
             System.out.println("Saved " + goalTracker.getUser() + " to " + JSON_LOC);
+            doPrintEventLog();
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_LOC);
         }
         return goalTrackerScreen;
     }
+
+    private void doPrintEventLog() {
+        LogPrinter lp = null;
+        lp.printLog(EventLog.getInstance());
+    }
+
+
 
     // Represents class for Goal Detail Screen to add a goal
     private class GoalDetailScreenAdd implements ActionListener {

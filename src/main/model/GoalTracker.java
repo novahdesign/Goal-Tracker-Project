@@ -45,6 +45,7 @@ public class GoalTracker implements Writable {
     // EFFECTS: adds Goal g to the goalList
     public void addGoal(Goal g) {
         goalList.add(g);
+        EventLog.getInstance().logEvent(new Event("Added a goal:" + g.getName()));
     }
 
     // REQUIRES: goalList is not an empty list
@@ -52,6 +53,8 @@ public class GoalTracker implements Writable {
     // EFFECTS: Goal g is removed from the goalList
     public void removeGoal(Goal g) {
         goalList.remove(g);
+        EventLog.getInstance().logEvent(new Event("Removed a goal:" + g.getName()));
+
     }
 
     // EFFECTS: returns list size
