@@ -25,6 +25,16 @@
             "target hours": 100,
             "name": "Enter",
             "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Enter",
+            "current hours": "0"
         }
     ]
 }

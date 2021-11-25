@@ -2,7 +2,7 @@ package ui.components;
 
 import model.Event;
 import model.EventLog;
-import ui.components.GoalDetailScreen;
+//import ui.components.GoalDetailScreen;
 import model.Goal;
 import model.GoalTracker;
 import org.json.JSONArray;
@@ -64,8 +64,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         return goalTracker;
     }
 
-    GoalTracker goalTracker;
-            //= new GoalTracker("Default User");
+    GoalTracker goalTracker = new GoalTracker("Default User");
 
     // EFFECTS: creates the Goal Tracker Screen window
     public GoalTrackerScreen() throws MalformedURLException {
@@ -643,6 +642,8 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
             System.out.println(goal.getProgress());
 
             goalTracker.getGoalList().set(testList.getSelectedIndex(), newGoal);
+      //      goalTracker.getGoalList().set(goalList.getSelectedIndex(), newGoal);
+
             listModel.set(testList.getSelectedIndex(), newGoal.getName());
             EventLog.getInstance().logEvent(new Event("Edited a goal:" + newGoal.getName()));
 

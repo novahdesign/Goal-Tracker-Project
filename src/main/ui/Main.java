@@ -2,7 +2,7 @@ package ui;
 
 import model.Goal;
 import model.GoalTracker;
-import ui.components.GoalDetailScreen;
+//import ui.components.GoalDetailScreen;
 import ui.components.GoalTrackerScreen;
 
 import java.net.MalformedURLException;
