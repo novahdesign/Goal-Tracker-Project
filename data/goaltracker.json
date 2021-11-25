@@ -3,37 +3,12 @@
     "goals": [
         {
             "target hours": 100,
-            "name": "Enter",
+            "name": "edit",
             "current hours": "0"
         },
         {
             "target hours": 100,
-            "name": "3333",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "Enter3",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "Goal 1 example",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "Goal 2 wow!",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "Go to Office Hours",
-            "current hours": "0"
-        },
-        {
-            "target hours": 100,
-            "name": "Complete Phase 4",
+            "name": "2",
             "current hours": "0"
         }
     ]

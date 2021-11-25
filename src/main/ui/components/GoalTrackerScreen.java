@@ -643,6 +643,7 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
 
             goalTracker.getGoalList().set(testList.getSelectedIndex(), newGoal);
             listModel.set(testList.getSelectedIndex(), newGoal.getName());
+            EventLog.getInstance().logEvent(new Event("Edited a goal:" + newGoal.getName()));
 
             frame.dispose();
 

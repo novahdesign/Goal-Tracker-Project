@@ -14,6 +14,8 @@ public class GoalTracker implements Writable {
 
     public void setGoalList(List<Goal> goalList) {
         this.goalList = goalList;
+        EventLog.getInstance().logEvent(new Event("Set the goal list:" + goalList));
+
     }
 
     public List<Goal> getGoalList() {
