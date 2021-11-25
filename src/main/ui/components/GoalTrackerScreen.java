@@ -64,7 +64,8 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         return goalTracker;
     }
 
-    GoalTracker goalTracker = new GoalTracker("Default User");
+    GoalTracker goalTracker;
+            //= new GoalTracker("Default User");
 
     // EFFECTS: creates the Goal Tracker Screen window
     public GoalTrackerScreen() throws MalformedURLException {
