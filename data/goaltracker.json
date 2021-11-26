@@ -10,6 +10,26 @@
             "target hours": 100,
             "name": "weqewweq",
             "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Goal Example",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Study for finals CPSC",
+            "current hours": "2"
+        },
+        {
+            "target hours": 100,
+            "name": "Editing this goal ",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "Go to sleep earlier",
+            "current hours": "0"
         }
     ]
 }

@@ -76,6 +76,35 @@ Added a goal:Go to Office Hours
 Tue Nov 23 12:03:43 PST 2021
 Added a goal:Complete Phase 4
 
+
+Fri Nov 26 13:48:20 PST 2021
+Added a goal:Enterwww
+
+
+Fri Nov 26 13:48:20 PST 2021
+Added a goal:weqewweq
+
+
+Fri Nov 26 13:48:28 PST 2021
+Added a goal:Goal Example
+
+
+Fri Nov 26 13:48:36 PST 2021
+Added a goal:Study for finals CPSC
+
+
+Fri Nov 26 13:48:41 PST 2021
+Edited a goal:Study for finals CPSC
+
+
+Fri Nov 26 13:48:49 PST 2021
+Added a goal:hello there!
+
+
+Fri Nov 26 13:49:04 PST 2021
+Edited a goal:Editing this goal
+
+
 Phase 4: Task 3
 
 Reflections on my uml class diagram and refactoring:
@@ -86,5 +115,4 @@ When reflecting on my UML Class Diagram of my code design, there are a few aspec
 
 First, the most confusing part of my design is the GUI. I would refactor this by extracting certain functions like GoalDetailAdd and GoalDetailEditVIew into separate classes that only function to edit, add, and view, not ALSO construct the UI panel. The way I could refactor this is by extracting a new public abstract class that constructs the GoalDetailScreen. Then, I would implement the unique functions of Add and Edit/View in separate classes. This serves to reduce duplication and unnecessary code.
 
-There is no consistency in the way many of the classes are factored.
-
+Next, there may be certain degrees of coupling that are unnecessary, such as the relationship between the GoalTrackerScreen UI and the list of indiidual goals. It may be helpful to implement helpers that allow the UI to only access the goal list, and not each individual goal that needs to be displayed. This could decrease coupling and improve the functionality of code.
