@@ -80,3 +80,11 @@ Phase 4: Task 3
 
 Reflections on my uml class diagram and refactoring:
 
+Phase 4 - Task 3
+
+When reflecting on my UML Class Diagram of my code design, there are a few aspects I would change in order to improve cohesion and coupling as well as readability and maintainability.
+
+First, the most confusing part of my design is the GUI. I would refactor this by extracting certain functions like GoalDetailAdd and GoalDetailEditVIew into separate classes that only function to edit, add, and view, not ALSO construct the UI panel. The way I could refactor this is by extracting a new public abstract class that constructs the GoalDetailScreen. Then, I would implement the unique functions of Add and Edit/View in separate classes. This serves to reduce duplication and unnecessary code.
+
+There is no consistency in the way many of the classes are factored.
+
