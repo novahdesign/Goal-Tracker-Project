@@ -57,9 +57,9 @@ GUI User Stories:
 
 ### Phase 4
 
-Example of Event Logging:
-
 Phase 4: Task 2
+
+Example of Event Logging:
 
 Tue Nov 23 12:03:18 PST 2021
 Added a goal:Goal 1 example
@@ -75,3 +75,8 @@ Added a goal:Go to Office Hours
 
 Tue Nov 23 12:03:43 PST 2021
 Added a goal:Complete Phase 4
+
+Phase 4: Task 3
+
+Reflections on my uml class diagram and refactoring:
+

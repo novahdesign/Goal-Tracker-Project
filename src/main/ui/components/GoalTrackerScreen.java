@@ -141,6 +141,11 @@ public class GoalTrackerScreen extends DefaultListModel implements ActionListene
         }
     }
 
+//    // EFFECTS: creates clear button
+//    private JButton getClearButton() {
+//
+//    }
+
     // EFFECTS: creates the save button
     private JButton getSaveButton() {
         JButton saveButton = new JButton("Save");
