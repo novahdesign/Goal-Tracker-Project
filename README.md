@@ -77,14 +77,6 @@ Tue Nov 23 12:03:43 PST 2021
 Added a goal:Complete Phase 4
 
 
-Fri Nov 26 13:48:20 PST 2021
-Added a goal:Enterwww
-
-
-Fri Nov 26 13:48:20 PST 2021
-Added a goal:weqewweq
-
-
 Fri Nov 26 13:48:28 PST 2021
 Added a goal:Goal Example
 
@@ -94,7 +86,7 @@ Added a goal:Study for finals CPSC
 
 
 Fri Nov 26 13:48:41 PST 2021
-Edited a goal:Study for finals CPSC
+Edited a goal: Study for finals CPSC
 
 
 Fri Nov 26 13:48:49 PST 2021
@@ -109,7 +101,6 @@ Phase 4: Task 3
 
 Reflections on my uml class diagram and refactoring:
 
-Phase 4 - Task 3
 
 When reflecting on my UML Class Diagram of my code design, there are a few aspects I would change in order to improve cohesion and coupling as well as readability and maintainability.
 
