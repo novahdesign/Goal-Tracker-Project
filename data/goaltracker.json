@@ -1,4 +1,15 @@
 {
     "user": "Default User",
-    "goals": []
+    "goals": [
+        {
+            "target hours": 100,
+            "name": "Enterwww",
+            "current hours": "0"
+        },
+        {
+            "target hours": 100,
+            "name": "weqewweq",
+            "current hours": "0"
+        }
+    ]
 }
