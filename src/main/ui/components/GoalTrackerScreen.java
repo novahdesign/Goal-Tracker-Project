@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Goal Tracker Screen that is the opening GUI window upon opening the application
-public class GoalTrackerScreen extends DefaultListModel implements ActionListener, Writable {
+public class GoalTrackerScreen extends DefaultListModel implements ActionListener {
 
     Goal goal;
     private static final String JSON_LOC = "./data/goaltracker.json";

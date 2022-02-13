@@ -3,32 +3,27 @@
     "goals": [
         {
             "target hours": 100,
-            "name": "Enterwww",
+            "name": "Enter",
             "current hours": "0"
         },
         {
             "target hours": 100,
-            "name": "weqewweq",
+            "name": "Enter",
             "current hours": "0"
         },
         {
             "target hours": 100,
-            "name": "Goal Example",
+            "name": "Enter",
             "current hours": "0"
         },
         {
             "target hours": 100,
-            "name": "Study for finals CPSC",
-            "current hours": "2"
-        },
-        {
-            "target hours": 100,
-            "name": "Editing this goal ",
+            "name": "Enter",
             "current hours": "0"
         },
         {
             "target hours": 100,
-            "name": "Go to sleep earlier",
+            "name": "Enter",
             "current hours": "0"
         }
     ]
