@@ -55,9 +55,12 @@ GUI User Stories:
 - As a user, I want to be greeted with a Welcome message and animated visually aesthetic components upon running my goal tracker and viewing the GUI.
 - As a user, I want to be able to generate a new screen that displays an inspirational visual image upon pressing the "Inspiration" button in my GUI.
 
-Graphical User Interface Screenshots:
+### Graphical User Interface Screenshots:
+
 ![image](https://user-images.githubusercontent.com/73559847/154778826-3bf52914-c3b9-41b7-9888-dc79c5d0f1a7.png)
+
 ![image](https://user-images.githubusercontent.com/73559847/154778898-8ae3516a-bc3c-4c46-8da9-08962925d6fb.png)
+
 ![giphy (3)](https://user-images.githubusercontent.com/73559847/154778863-1a2e3d1f-2301-4b07-b320-6b951b86d011.gif)
 
 ### Phase 4
